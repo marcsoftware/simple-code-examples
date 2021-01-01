@@ -16,10 +16,6 @@ git log
 git diff
 git tag v1.4.2
 
-#VIM command
-:wq!
-
-
 git add .
 git commit -m 'message'
 git push origin master
@@ -29,3 +25,6 @@ git pull
 git merge master 
 
 # todo merge feature into master
+git checkout yourbranch
+git pull origin master
+:wq!
