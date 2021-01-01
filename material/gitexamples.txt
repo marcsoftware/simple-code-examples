@@ -1,0 +1,31 @@
+git config --global --unset-all
+git config --global credential.helper wincred
+
+git remote add origin https://github.com/username/reponame.git
+git clone https://github.com/username/reponame.git
+
+git checkout branchname
+git checkout -b namenewbranch
+
+git reset --hard
+git commit --amend
+
+
+git branch
+git log
+git diff
+git tag v1.4.2
+
+#VIM command
+:wq!
+
+
+git add .
+git commit -m 'message'
+git push origin master
+
+# todo merge master into your_feature
+git pull
+git merge master 
+
+# todo merge feature into master
