@@ -13,9 +13,6 @@ git commit --amend
 git branch
 git log
 git diff
-git tag v1.4.2
-git tag -d v1.4.2
-git tag 
 
 git add .
 git commit -m 'message'
