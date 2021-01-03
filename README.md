@@ -2,7 +2,7 @@ GIT
 
 https://wiki.spheredev.org/index.php/Git_for_the_lazy
 
-
+git ignore stuff - https://www.pluralsight.com/guides/how-to-use-gitignore-file
 
 MAVEN
 

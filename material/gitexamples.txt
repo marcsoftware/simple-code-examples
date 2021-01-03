@@ -26,3 +26,13 @@ git merge nameofotherbranch
 git checkout yourbranch
 git pull origin master
 :wq!
+
+.gitignore
+*.png 
+/folder/path/
+/fileandfolder/path
+!whitelist.txt
+**/logs<-same
+logs <-same
+logs/**
+#comment
