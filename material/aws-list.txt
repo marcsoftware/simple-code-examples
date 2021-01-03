@@ -1,0 +1,171 @@
+*Compute
+EC2
+Lightsail
+Lambda
+Batch
+Elastic Beanstalk
+Serverless Application Repository
+AWS outposts
+EC2 image bulder
+
+*Storage 
+S3
+EFS
+FSx
+S3 glacier
+Storage gateway
+AWS backup
+
+*Database
+RDS
+DynamoDB
+ElastiCache
+Neptune
+Amazon QLDB
+Amazon DocumentDB
+Amazon Keyspaces
+Amazone Timestream
+
+
+*Migration * Transfer
+AWS migration Hub
+Application Discovery Service
+Database Migration Service
+AWS Transfer Family
+AWS Snow Family
+DataSync
+
+* Networking & Content Delivery
+VPC
+Cloud Front
+Route 53
+API Gateway
+Direct Connect
+AWS App Mesh
+AWS Cloud Map
+Global Accelerator
+
+* Developer Tools
+CodeStar
+CodeCommit 
+CodeArtifact
+CodeBuild
+CodeDeploy
+CodePipeline
+Cloud9
+X-Ray
+
+* Robotics 
+AWS RoboMaker
+----------------------------------
+*Customer Enablement
+AWS IQ
+Support
+Manages Services
+Activate for Startups
+
+*BlockChain
+Amazon Managed Blockchain
+
+*Salellite
+Ground Station
+
+*Quantum Technologies
+Amazon Braket
+
+*Management & Governance
+AWS Organizations
+CloudWatch
+AWS Auto Scaling
+CloudFormation
+CloudTrail
+Config
+OpsWorks
+Service Catalog
+Systems Manager
+AWS AppConfig
+Trusted Advisor
+Control Tower
+AWS License Manager
+AWS Well-Architected Tool
+Personal Health Dashboard
+AWS chatbot
+Launch Wizard
+AWS Compute Optimizer
+Resource Groups & Tag Editor
+Amazon Grafana
+Amazon Prometheus
+AWS Proton
+
+*Media Services
+Kinesis Video Streams
+MediaConnect
+MediaConvert
+MediaLive
+MediaPackage
+MediaStore
+MediaTailor
+Elemental Appliances & Software
+Amazon Interactive Video Serivce
+Elastic Transcoder
+
+-------------------
+*Machine Learning
+Amazon SageMaker
+Amazon Augmented AI
+Amazon CodeGuru
+Amazon Comprehend
+Amazon Forecast
+Amazon Fraud Detector
+Amazon Kendra
+Amazon Lex
+Amazon Personalize
+Amazon Polly
+Amazon Rekognition
+Amazon Textract
+Amazon Transcribe
+Amazon Translate
+AWS DeepComposer
+AWS DeepLens
+AWS Panorama
+AWS Monitron
+Amazon HealthLake
+Amazon Lookout for Vision
+Amazon Lookout for Equipment
+Amazon Lookout for Metrics
+
+* Analytics
+
+Athena
+Amazon Redshift
+EMR
+CloudSearch
+Elasticsearch Service
+Kinesis
+QuickSight
+Data Pipeline
+AWS Data Exchange
+AWS Glue
+AWS Lake Formation
+MSK
+
+*Security , Identity & Compliance
+IAM
+Resource Access Manager
+Cognito
+Secrets Manager
+GuardDuty
+Inspector
+Amazon Macie
+AWS Single Sign-On
+Certificate Manager
+Key Management Service
+CloudHSM
+Directory Service
+WAF * Shield
+AWS Firewall Manager
+Artifact
+Security Hub
+Detective
+AWS Audit Manager
+AWS Signer

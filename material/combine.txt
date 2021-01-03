@@ -1,4 +1,31 @@
-mvn clean	_ target directory.
+git config --global --unset-all
+git config --global credential.helper wincred
+
+git remote add origin https://github.com/username/reponame.git
+git clone https://github.com/username/reponame.git
+
+git checkout branchname
+git checkout -b namenewbranch
+
+git reset --hard
+git commit --amend
+
+git branch
+git log
+git diff
+
+git add .
+git commit -m 'message'
+git push origin master
+
+# Merge a branch into master
+git checkout master
+git merge nameofotherbranch
+
+# merge master into your personal branch
+git checkout yourbranch
+git pull origin master
+:wq!mvn clean	_ target directory.
 mvn validate	_ if the project is correct.
 mvn compile	_ source code, classes stored in target/classes.
 mvn test	Run _ 
@@ -22,4 +49,4 @@ dependencies>
 groupID>
 aritfactID>
 version>
-mvnrepository.com
+mvnrepository.com
