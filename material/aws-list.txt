@@ -6,7 +6,7 @@ Batch
 Elastic Beanstalk
 Serverless Application Repository
 AWS outposts
-EC2 image bulder
+EC2 image builder
 
 *Storage 
 S3
@@ -24,10 +24,10 @@ Neptune
 Amazon QLDB
 Amazon DocumentDB
 Amazon Keyspaces
-Amazone Timestream
+Amazon Timestream
 
 
-*Migration * Transfer
+*Migration & Transfer
 AWS migration Hub
 Application Discovery Service
 Database Migration Service
@@ -106,7 +106,7 @@ MediaPackage
 MediaStore
 MediaTailor
 Elemental Appliances & Software
-Amazon Interactive Video Serivce
+Amazon Interactive Video Service
 Elastic Transcoder
 
 -------------------
@@ -149,7 +149,7 @@ AWS Glue
 AWS Lake Formation
 MSK
 
-*Security , Identity & Compliance
+*Security, Identity & Compliance
 IAM
 Resource Access Manager
 Cognito
@@ -162,7 +162,7 @@ Certificate Manager
 Key Management Service
 CloudHSM
 Directory Service
-WAF * Shield
+WAF & Shield
 AWS Firewall Manager
 Artifact
 Security Hub

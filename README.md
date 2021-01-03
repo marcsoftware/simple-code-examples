@@ -13,3 +13,9 @@ https://www.jrebel.com/blog/maven-cheat-sheet
 mvn's lifecycle - https://www.youtube.com/watch?v=Cv52aJ-w7eY
 
 good example commands - https://www.journaldev.com/33645/maven-commands-options-cheat-sheet
+
+JAVA
+
+java8 tutorial - https://winterbe.com/posts/2014/03/16/java-8-tutorial/
+
+java collections - https://www.geeksforgeeks.org/collections-in-java-2/
