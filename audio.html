@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<style>
+    div{
+        margin: auto;
+  width: 50%;
+  border: 3px solid white;
+  padding: 10px;
+    }
+</style>
+<body>
+
+
+
+ <script src="lib.js"></script> 
+
+<script>
+
+//-----------------------------------------------------------------------------
+// global variables
+//-----------------------------------------------------------------------------    
+
+ file='x';
+ ans_key = '';
+ var file_name;
+ window.onload=init();
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+   
+function init() {
+  const queryString = window.location.search;
+  console.log(queryString);
+
+  const urlParams = new URLSearchParams(queryString);
+  
+   file_name = (urlParams+"").split("=")[1];
+  document.title=file_name;
+
+  page=parseInt(getCookie("page"));
+  doGet("study_material/"+file_name+'.txt');
+
+    
+  
+ 
+ 
+  
+}
+
+//-----------------------------------------------------------------------------
+// play audio
+//-----------------------------------------------------------------------------
+function playAudio(word){
+
+  var audio = new Audio("audio-de/"+word.trim()+".wav");
+  try{
+    audio.play();
+  }catch(e){
+    console.log("USER MUST ENABLE AUTO PLAY!!!!!!!!!!!!!!!!");
+    console.log(e);
+  }
+
+}
+
+//-----------------------------------------------------------------------------
+// draw the question
+//-----------------------------------------------------------------------------
+var page;
+function parseFile(){
+    
+    
+    document.getElementById("page").innerHTML=(page+1)+"/"+file.length;
+
+    
+    //document.getElementById("que").innerHTML=file[page];
+    playAudio(file[page]);
+
+     ans_key = file[page].trim();
+    //document.getElementById("ans_key").innerHTML=ans_key;
+}
+
+
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+ async  function doGet(url) {
+      let response = await fetch(url);
+
+    console.log(response.status); // 200
+    console.log(response.statusText); // OK
+
+    if (response.status === 200) {
+        let data = await response.text();
+         file = data.split("\n"); 
+         //file.shift();// shift() deletes the empty element.
+        
+        parseFile();
+        // handle data
+    }
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function hideAnswere(){
+  document.getElementById('ans_key').innerHTML="";
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function checkInput(input){
+    if(input==" "){ //if user enter space then flash the word and replay the audio
+      playAudio(ans_key);
+      document.getElementById('ans_key').innerHTML=ans_key;
+      document.getElementById('input').value="";
+      setTimeout(hideAnswere, 150);
+        return;
+    }
+
+    if(input=="?"){
+      
+      document.getElementById('ans_key').innerHTML=ans_key;
+      document.getElementById('input').value="";
+
+      
+        return;
+    }
+    
+    document.getElementById('ans_key').innerHTML=""; // if user starts typing hide the key
+
+    var check=interpolate(input) ;
+    if(compare(check,ans_key)){
+        handleCorrectAns();
+    }else{
+        document.getElementById("feedback").innerHTML='no';
+    }
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function getCookie(cname) {
+  var name = file_name+cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+
+
+  return 0;
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function handleCorrectAns(){
+    document.getElementById("feedback").innerHTML='yes';
+    document.getElementById('input').value='';
+    page++;
+
+if(page>=file.length-1){
+  page=0;
+  document.getElementById("feedback").innerHTML='----------------------';
+
+}
+    document.cookie = file_name+"page="+page+"; expires=Thu, 18 Dec 3013 12:00:00 UTC;SameSite=None; Secure"; 
+
+    parseFile();
+}
+
+
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function feedback(text){
+  console.log('key'+ans_key);
+    document.getElementById('color').innerHTML=text;
+}
+</script>
+<div>
+
+<span id='page'></span><br/>
+<span id='que'></span>
+
+<input type="text" id='input' onkeyup='checkInput(this.value)'/> 
+
+<span id='ans_key'></span><br/>
+<span id='feedback'></span>
+<span id='color'></span>
+</div>
+</body>
+</html>
+

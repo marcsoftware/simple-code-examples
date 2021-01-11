@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<style>
+    div{
+        margin: auto;
+  width: 50%;
+  border: 3px solid white;
+  padding: 10px;
+  padding:1px;
+        margin-top:0px;
+        margin-bottom: :1px;
+    }
+
+    .quiz{
+      background-color: blue;
+      display:inline;
+    }
+
+    .line{
+        
+        width: 75%;
+        
+        word-wrap: break-word;
+    }
+
+    .word{
+      background-color: white;
+      margin:0px;
+      border: none;
+      outline:none
+    }
+</style>
+<body>
+
+
+ <script src="lib.js"></script> 
+
+
+<script>
+
+//-----------------------------------------------------------------------------
+// global variables
+//-----------------------------------------------------------------------------    
+
+ file='x';
+ ans_key = '';
+ var file_name;
+ window.onload=init();
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+   
+function init() {
+  const queryString = window.location.search;
+  console.log(queryString);
+
+  const urlParams = new URLSearchParams(queryString);
+  
+   file_name = (urlParams+"").split("=")[1];
+  document.title=file_name;
+
+  page=parseInt(getCookie("page"));
+  doGet("study_material/"+file_name+'.txt');
+
+  
+}
+
+
+
+
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+ async  function doGet(url) {
+      let response = await fetch(url);
+
+    console.log(response.status); // 200
+    console.log(response.statusText); // OK
+
+    if (response.status === 200) {
+        let data = await response.text();
+         file = data.split("\n"); 
+         //file.shift();// shift() deletes the empty element.
+
+         // parse the [] to make mini-quizes
+         data=data.replace(/(\[.*\])/g,function(v) { return wrapAudio(v); });
+
+         data=data.split("\n");
+         data=data.join("</div><div class='line' >"); 
+         data = "<div class='line' >"+data+"/div>"
+         
+
+         document.getElementById('data').innerHTML=data;
+         
+        
+        
+        // handle data
+    }
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function wrapAudio(x){
+  return x.replace(/([a-zA-ZäöüßÄÖÜ]+)/g,"<input type='button' class='word' value='$1📢' onmouseup='playAudio(this.value)'/>");
+
+  
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function checkInput(input){
+    if(input==""){
+        return;
+    }
+    
+    var check=interpolate(input) ;
+    if(compare(check,ans_key)){
+        handleCorrectAns();
+    }else{
+        document.getElementById("feedback").innerHTML='no';
+    }
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function getCookie(cname) {
+  var name = file_name+cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+
+
+  return 0;
+}
+
+
+
+
+
+</script>
+<div>
+<pre id='data'>x</pre><br/>
+
+</div>
+</body>
+</html>
+
