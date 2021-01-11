@@ -21,22 +21,7 @@
         white-space: pre;
     }
 
-    .quiz{
-      
-      
-      padding:10px;
-      margin-left: 60px;
-      
-      border-style:   solid ;
-      word-wrap: normal;
-      width: 50%;
-      white-space: normal;
-      display:block;
 
-      margin-top:0px;
-        margin-bottom: :0px;
-
-    }
 
     .line{
         
@@ -55,6 +40,11 @@
     input{
       margin-left:10px;
       margin-top:10px;
+    }
+
+
+    textarea{
+      width:100%;
     }
 </style>
 <body>
@@ -116,7 +106,7 @@ function init() {
          // parse the [] to make mini-quizes
          
 
-         alert(data);
+         
          
          
          
@@ -128,13 +118,6 @@ function init() {
         // handle data
     }
 }
-
-
-
-
-
-
-
 
 
 //-----------------------------------------------------------------------------
@@ -160,13 +143,23 @@ function getCookie(cname) {
 
 
 
+//-----------------------------------------------------------
+//
+//-----------------------------------------------------------
+function getLineNumber(handle){
+  var cursor_index = handle.selectionStart;
+  document.getElementById('lineNumber').innerHTML=handle.value.match(/\n/g).length+':'+cursor_index;
+}
+
 
 
 </script>
-
+<span id='lineNumber'>#</span>
+<textarea onkeyup="getLineNumber(this)" ></textarea>
 <div id='data'>x</div><br/>
 
 
 </body>
 </html>
+
 
