@@ -90,6 +90,7 @@ function init() {
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+var global_length='';
  async  function doGet(url) {
       let response = await fetch(url);
 
@@ -105,7 +106,7 @@ function init() {
 
          // parse the [] to make mini-quizes
          
-
+         global_length=file.length;
          
          
          
@@ -164,7 +165,7 @@ function getLineNumber(handle){
       line_number=0;
   }
 
-   document.getElementById('lineNumber').innerHTML=line_number;
+   document.getElementById('lineNumber').innerHTML=line_number+' /'+global_length;
 
    hideTyped(line_number);
 }

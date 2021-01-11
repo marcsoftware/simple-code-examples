@@ -18,4 +18,8 @@ JAVA
 
 java8 tutorial - https://winterbe.com/posts/2014/03/16/java-8-tutorial/
 
+git repo for the java8 tutorial - https://github.com/winterbe/java8-tutorial
+
+extra git repo for java 8 . https://github.com/java8/Java8InAction
+
 java collections - https://www.geeksforgeeks.org/collections-in-java-2/
