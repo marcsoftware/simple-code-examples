@@ -142,7 +142,12 @@ function getCookie(cname) {
 }
 
 
-
+//-----------------------------------------------------------
+//
+//-----------------------------------------------------------
+function hideTyped(number){
+  document.getElementById('data').innerHTML=file.slice(number).join("\n");
+}
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
@@ -160,6 +165,8 @@ function getLineNumber(handle){
   }
 
    document.getElementById('lineNumber').innerHTML=line_number;
+
+   hideTyped(line_number);
 }
 
 
