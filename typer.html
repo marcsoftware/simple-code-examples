@@ -114,9 +114,9 @@ function init() {
          //file.shift();// shift() deletes the empty element.
 
          // parse the [] to make mini-quizes
-         data=data.replace(/(\{[^}]+[}])/g,function(v) { return wrapQuiz(v); });
-
          
+
+         alert(data);
          
          
          
@@ -130,90 +130,10 @@ function init() {
 }
 
 
-//-----------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------
-function wrapQuiz(x){
-   x=x.replace(/\:/g,'":"');
-
- // add quotes so that it will be valid jasob
-   var lines = x.split("\n");
-   for(var i=0;i<lines.length;i++){
-      if(lines[i].indexOf(":")>=0){
-          lines[i]="\""+lines[i].trim()+"\","
-          
-      }
-
-   }
-
-   lines=lines.join("\n");
-
-   //delete the last comma
-   lines=lines.split("").reverse();
-   lines=lines.join("").replace(/\,/i,"");
-   lines=lines.split("").reverse().join("");
-
-   //
-   var obj = JSON.parse(lines); 
-   if(obj.k != undefined){
-    obj.k=`${obj.q}<br/><input type='test' onkeyup="checkQuiz(this,'${obj.k}')"></input>`;
-    return `<span class='quiz'>${obj.k}</span>`;
-   }
-
-   if(obj.audio != undefined){
-
-    var audio = ` <input type='button' class='word' value='${obj.audio}📢' onmouseup="playAudio('${obj.audio}')"/>`;
-    var options = obj.multi.split(",");
-    var key = options[0];
-    
-    options=options.map(function(v) { 
-      var id = Math.floor(Math.random() * 1000000); // make random number
-      return ` <input type="radio" onmouseup="checkQuiz(this,'${key}',${id})"  value="${v}"><span id=${id}>${v}</span>`; 
-    });
-    
-    shuffle(options);
-      return `<span class='quiz'>${audio+options}</span>`;
-   }  
-
-   return 'ERROR';
-  
-  
-}
-//-----------------------------------------------------------------------------
-// 
-// key is the answere_key
-//-----------------------------------------------------------------------------
-function checkQuiz(handle,key,id){
-  handle.value=interpolate(handle.value);
-  if(compare(handle.value,key)){
-    handle.style.color='white';
-    handle.style.backgroundColor='green';
-    handle.disabled = true;
-    if(id != null){
-      document.getElementById(id).style.color='green';
-    }
-  }else{
-    handle.style.color='red';
-    if(id != null){
-      document.getElementById(id).style.color='red';
-    }
-  }
-}
 
 
-//-----------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------
-function compare(left,right){
-    left=left.replace(/[^a-zA-ZäöüßÄÖÜ]/g,"");
-    right=right.replace(/[^a-zA-ZäöüßÄÖÜ]/g,"");
 
 
-    
-    left=left.toLowerCase().trim();
-    right=right.toLowerCase().trim();
-    return left === right;
-}
 
 
 
