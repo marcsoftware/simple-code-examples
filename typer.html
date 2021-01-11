@@ -148,7 +148,13 @@ function getCookie(cname) {
 //-----------------------------------------------------------
 function getLineNumber(handle){
   var cursor_index = handle.selectionStart;
-  document.getElementById('lineNumber').innerHTML=handle.value.match(/\n/g).length+':'+cursor_index;
+
+
+  try{
+    document.getElementById('lineNumber').innerHTML=handle.value.substring(0,cursor_index).match(/\n/g).length;
+  }catch(e){
+    
+  }
 }
 
 
