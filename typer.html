@@ -149,12 +149,17 @@ function getCookie(cname) {
 function getLineNumber(handle){
   var cursor_index = handle.selectionStart;
 
-
+   var sub='';
+   var line_number;
+   sub = handle.value.substring(0,cursor_index);
   try{
-    document.getElementById('lineNumber').innerHTML=handle.value.substring(0,cursor_index).match(/\n/g).length;
+      
+      line_number=sub.match(/\n/g).length;
   }catch(e){
-    
+      line_number=0;
   }
+
+   document.getElementById('lineNumber').innerHTML=line_number;
 }
 
 
