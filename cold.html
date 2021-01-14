@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<style>
+
+  h6,h5,h4,h3,h2,h1{
+    width:100%;
+    text-align: center;
+    margin: 0px;
+    padding:0px;
+  }
+    div{
+        margin: auto;
+        width: 50%;
+        border: 3px solid white;
+        padding: 10px;
+        padding:1px;
+        margin-top:0px;
+        margin-bottom: :1px;
+        white-space: pre;
+    }
+
+
+
+    .line{
+        
+        width: 75%;
+        
+        word-wrap: break-word;
+    }
+
+    .word{
+      
+      margin:0px;
+      
+      outline:none
+    }
+
+    input{
+      margin-left:10px;
+      margin-top:10px;
+    }
+
+
+    textarea{
+      width:100%;
+    }
+
+
+    #data{
+      font-family: monospace;
+    }
+</style>
+<body>
+
+
+ <script src="lib.js"></script> 
+
+
+<script>
+
+//-----------------------------------------------------------------------------
+// global variables
+//-----------------------------------------------------------------------------    
+
+ file='x';
+ ans_key = '';
+ var file_name;
+ window.onload=init();
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+   
+function init() {
+  const queryString = window.location.search;
+  
+
+  const urlParams = new URLSearchParams(queryString);
+  
+   file_name = (urlParams+"").split("=")[1];
+  document.title=file_name;
+
+  page=parseInt(getCookie("page"));
+  doGet("study_material/"+file_name+'.txt');
+
+  
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+var global_hidden;
+var global_lines;
+function parse(){
+    var output = global_file.replace(/[a-zA-Z]/g,"X");
+     global_hidden = output.split("\n");
+     global_lines = global_file.split("\n");
+}
+
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+var global_length='';
+var global_file='';
+ async  function doGet(url) {
+      let response = await fetch(url);
+
+   
+
+    if (response.status === 200) {
+        let data = await response.text();
+
+         file = data.split("\n"); 
+         //data = data.replace(/[\n\r][\n\r][\n\r]+/g,"\n\n");
+         
+         //file.shift();// shift() deletes the empty element.
+
+         // parse the [] to make mini-quizes
+         
+         global_length=file.length;
+         
+         
+         global_file=data;
+         
+
+         document.getElementById('data').innerHTML=data;
+         
+        parse();
+        
+        // handle data
+    }
+}
+
+
+
+
+//-----------------------------------------------------------
+//
+//-----------------------------------------------------------
+function check(handle){
+   var input = handle.value;
+   render();
+}
+
+
+//-----------------------------------------------------------
+// precondition : parse() has to be called before this function
+//-----------------------------------------------------------
+function render(){
+    document.getElementById('data').innerHTML=global_hidden.join('');
+}
+
+
+</script>
+<span id='lineNumber'>#</span>
+<input type='text' onkeyup='check(this)'></input>
+<div id='data'>x</div><br/>
+
+
+</body>
+</html>
+
+
