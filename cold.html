@@ -51,6 +51,10 @@
     #data{
       font-family: monospace;
     }
+
+    .correct{
+      color:green;
+    }
 </style>
 <body>
 
@@ -91,8 +95,8 @@ function init() {
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
-var global_hidden;
-var global_lines;
+var global_hidden=[];
+var global_lines=[];
 function parse(){
     var output = global_file.replace(/[a-zA-Z]/g,"X");
      global_hidden = output.split("\n");
@@ -142,7 +146,13 @@ var global_file='';
 //
 //-----------------------------------------------------------
 function check(handle){
-   var input = handle.value;
+   var input = handle.value.trim();
+   for(var i =0;i<global_lines.length;i++){
+        var key = global_lines[i].trim();
+        if(input===key){
+          global_hidden[i]=`<span class='correct'>${global_lines[i]}</span>`;
+        }
+   }
    render();
 }
 
