@@ -100,10 +100,19 @@ var global_lines=[];
 function parse(){
     var output = global_file.replace(/[a-zA-Z]/g,"X");
      global_hidden = output.split("\n");
+
+     global_hidden = global_hidden.map(function(element,index){
+        return `<span onmouseover=reveal(${index})>${element}</span>`;
+     })
      global_lines = global_file.split("\n");
 }
 
-
+//-----------------------------------------------------------------------------
+// show the user the awnsere
+//-----------------------------------------------------------------------------
+function reveal(number){
+  document.getElementById('reveal').innerHTML=global_lines[number];
+}
 
 //-----------------------------------------------------------------------------
 //
@@ -171,8 +180,9 @@ function render(){
 
 
 </script>
-<span id='lineNumber'>#</span>
+
 <input type='text' onkeyup='check(this)' id="input"></input>
+<span id='reveal'>#</span>
 <div id='data'>x</div><br/>
 
 
