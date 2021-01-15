@@ -55,6 +55,10 @@
     .correct{
       color:green;
     }
+
+    #move{
+      position: fixed;
+    }
 </style>
 <body>
 
@@ -181,8 +185,10 @@ function render(){
 
 </script>
 
-<input type='text' onkeyup='check(this)' id="input"></input>
+<div id='move'>
+<input type='text' onkeyup='check(this)' id="input"></input><br/>
 <span id='reveal'>#</span>
+</div>
 <div id='data'>x</div><br/>
 
 
