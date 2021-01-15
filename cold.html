@@ -146,11 +146,16 @@ var global_file='';
 //
 //-----------------------------------------------------------
 function check(handle){
+
    var input = handle.value.trim();
+   if(input ===""){
+    return;
+   }
    for(var i =0;i<global_lines.length;i++){
         var key = global_lines[i].trim();
         if(input===key){
-          global_hidden[i]=`<span class='correct'>${global_lines[i]}</span>`;
+          global_hidden[i]=global_hidden[i].trim()+"✔️\n";
+          document.getElementById('input').value='';
         }
    }
    render();
@@ -167,7 +172,7 @@ function render(){
 
 </script>
 <span id='lineNumber'>#</span>
-<input type='text' onkeyup='check(this)'></input>
+<input type='text' onkeyup='check(this)' id="input"></input>
 <div id='data'>x</div><br/>
 
 
