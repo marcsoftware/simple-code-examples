@@ -58,6 +58,12 @@
 
     #move{
       position: fixed;
+      width:20%;
+      background-color: lightblue;
+    }
+
+    #reveal, #input{
+        width: 95%;
     }
 </style>
 <body>
@@ -106,7 +112,7 @@ function parse(){
      global_hidden = output.split("\n");
 
      global_hidden = global_hidden.map(function(element,index){
-        return `<span onmouseover=reveal(${index})>${element}</span>`;
+        return `<span onmouseover=reveal(${index}) >${element}</span>`;
      })
      global_lines = global_file.split("\n");
 }
@@ -116,6 +122,7 @@ function parse(){
 //-----------------------------------------------------------------------------
 function reveal(number){
   document.getElementById('reveal').innerHTML=global_lines[number];
+
 }
 
 //-----------------------------------------------------------------------------
