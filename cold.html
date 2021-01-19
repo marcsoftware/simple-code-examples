@@ -65,6 +65,10 @@
     #reveal, #input{
         width: 95%;
     }
+
+    span{
+        display:inline-block;
+    }
 </style>
 <body>
 
@@ -112,7 +116,7 @@ function parse(){
      global_hidden = output.split("\n");
 
      global_hidden = global_hidden.map(function(element,index){
-        return `<span onmouseover=reveal(${index}) >${element}</span>`;
+        return `<span onmouseover=reveal(${index}) >${element}</span>\n`;
      })
      global_lines = global_file.split("\n");
 }
