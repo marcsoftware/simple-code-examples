@@ -25,7 +25,11 @@
         border-color: #5b6370;
     }
 
-   
+    span{
+        cursor: pointer;
+        color:blue;
+     text-decoration:underline;
+    }   
 
 </style>
 <body>
@@ -35,8 +39,13 @@
 
 
 <script>
-
-
+//----------------------------------------------------
+// forward to user to another page
+//----------------------------------------------------
+function forward(handle){
+    var both =handle.innerHTML.split(",");
+    window.location.href = `file:///C:/Users/marc/Desktop/simple-code-examples/${both[1]}.html?name=${both[0]}`
+}
 </script>
 
 
@@ -64,8 +73,9 @@
   
 
     git collection of Java8 sample code:<br/>
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/cold.html?name=Atomic1.java">cold</a>
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/cold.html?name=java8/Atomic1.java">slash in name</a>
+    
+    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/cold.html?name=java8/Atomic1.java">cold</a><br/>
+    <span onclick='forward(this)'>java8/ConcurrentUtils.java,cold</span>
 
     <br/>
     TODO add the other sample code links
