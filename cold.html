@@ -150,6 +150,9 @@ var global_file='';
     }else{
         url+='.txt';
     }
+
+    url=url.replace(/%2F/g,"/");
+    
       let response = await fetch(url);
 
    
