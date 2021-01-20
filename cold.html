@@ -22,6 +22,11 @@
     }
 
 
+@font-face {
+  font-family: hardToRead;
+  src: url(hardtoread.ttf);
+}
+
 
     .line{
         
@@ -64,9 +69,11 @@
 
     #reveal, #input{
         width: 95%;
+        font-family: consolas;
     }
 
     span{
+        font-family: hardToRead;
         display:inline-block;
     }
 </style>
@@ -100,7 +107,7 @@ function init() {
   document.title=file_name;
 
   page=parseInt(getCookie("page"));
-  doGet("study_material/"+file_name+'.txt');
+  doGet("study_material/"+file_name+'.txt'); //
 
   
 }
@@ -112,7 +119,7 @@ function init() {
 var global_hidden=[];
 var global_lines=[];
 function parse(){
-    var output = global_file.replace(/[a-zA-Z]/g,"X");
+    var output = global_file;
      global_hidden = output.split("\n");
 
      global_hidden = global_hidden.map(function(element,index){
