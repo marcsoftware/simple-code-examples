@@ -109,7 +109,7 @@ function init() {
   document.title=file_name;
 
   page=parseInt(getCookie("page"));
-  doGet("study_material/"+file_name+'.txt'); //
+  doGet(file_name); //
 
   
 }
@@ -144,6 +144,12 @@ function reveal(number){
 var global_length='';
 var global_file='';
  async  function doGet(url) {
+    url = "study_material/"+url;
+    if(url.includes(".java")){
+
+    }else{
+        url+='.txt';
+    }
       let response = await fetch(url);
 
    
