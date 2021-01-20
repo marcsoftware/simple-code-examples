@@ -77,7 +77,7 @@ function init() {
   document.title=file_name;
 
   page=parseInt(getCookie("page"));
-  doGet("study_material/"+file_name+'.txt');
+  doGet(file_name);
 
   
 }
@@ -87,38 +87,7 @@ function init() {
 
 
 
-//-----------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------
-var global_length='';
- async  function doGet(url) {
-      let response = await fetch(url);
 
-   
-
-    if (response.status === 200) {
-        let data = await response.text();
-
-         file = data.split("\n"); 
-         //data = data.replace(/[\n\r][\n\r][\n\r]+/g,"\n\n");
-         
-         //file.shift();// shift() deletes the empty element.
-
-         // parse the [] to make mini-quizes
-         
-         global_length=file.length;
-         
-         
-         
-         
-
-         document.getElementById('data').innerHTML=data;
-         
-        
-        
-        // handle data
-    }
-}
 
 
 //-----------------------------------------------------------------------------
