@@ -1,0 +1,434 @@
+package com.winterbe.java8.samples.misc;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @author Benjamin Winterberg
+ */
+public class Annotations1 {
+
+    @Target({ElementType.TYPE_PARAMETER, ElementType.TYPE_USE})
+    @interface MyAnnotation {
+
+    }
+
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface Hints {
+        Hint[] value();
+    }
+
+    @Repeatable(Hints.class)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface Hint {
+        String value();
+    }
+
+    @Hint("hint1")
+    @Hint("hint2")
+    class Person {
+
+    }
+
+    public static void main(String[] args) {
+        Hint hint = Person.class.getAnnotation(Hint.class);
+        System.out.println(hint);   // null
+
+        Hints hints1 = Person.class.getAnnotation(Hints.class);
+        System.out.println(hints1.value().length);  // 2
+
+        Hint[] hints2 = Person.class.getAnnotationsByType(Hint.class);
+        System.out.println(hints2.length);  // 2
+
+    }
+}package com.winterbe.java8.samples.misc;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+/**
+ * Utilities for hassle-free usage of lambda expressions who throw checked exceptions.
+ *
+ * @author Benjamin Winterberg
+ */
+public final class CheckedFunctions {
+
+    @FunctionalInterface
+    public interface CheckedConsumer<T> {
+        void accept(T input) throws Exception;
+    }
+
+    @FunctionalInterface
+    public interface CheckedPredicate<T> {
+        boolean test(T input) throws Exception;
+    }
+
+    @FunctionalInterface
+    public interface CheckedFunction<F, T> {
+        T apply(F input) throws Exception;
+    }
+
+    /**
+     * Return a function which rethrows possible checked exceptions as runtime exception.
+     *
+     * @param function
+     * @param <F>
+     * @param <T>
+     * @return
+     */
+    public static <F, T> Function<F, T> function(CheckedFunction<F, T> function) {
+        return input -> {
+            try {
+                return function.apply(input);
+            }
+            catch (Exception e) {
+                if (e instanceof RuntimeException) {
+                    throw (RuntimeException) e;
+                }
+                throw new RuntimeException(e);
+            }
+        };
+    }
+
+    /**
+     * Return a predicate which rethrows possible checked exceptions as runtime exception.
+     *
+     * @param predicate
+     * @param <T>
+     * @return
+     */
+    public static <T> Predicate<T> predicate(CheckedPredicate<T> predicate) {
+        return input -> {
+            try {
+                return predicate.test(input);
+            }
+            catch (Exception e) {
+                if (e instanceof RuntimeException) {
+                    throw (RuntimeException) e;
+                }
+                throw new RuntimeException(e);
+            }
+        };
+    }
+
+    /**
+     * Return a consumer which rethrows possible checked exceptions as runtime exception.
+     *
+     * @param consumer
+     * @param <T>
+     * @return
+     */
+    public static <T> Consumer<T> consumer(CheckedConsumer<T> consumer) {
+        return input -> {
+            try {
+                consumer.accept(input);
+            }
+            catch (Exception e) {
+                if (e instanceof RuntimeException) {
+                    throw (RuntimeException) e;
+                }
+                throw new RuntimeException(e);
+            }
+        };
+    }
+}
+package com.winterbe.java8.samples.misc;
+
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * @author Benjamin Winterberg
+ */
+public class Concurrency1 {
+
+    public static void main(String[] args) {
+        ConcurrentHashMap<Integer, UUID> concurrentHashMap = new ConcurrentHashMap<>();
+
+        for (int i = 0; i < 100; i++) {
+            concurrentHashMap.put(i, UUID.randomUUID());
+        }
+
+        int threshold = 1;
+
+        concurrentHashMap.forEachValue(threshold, System.out::println);
+
+        concurrentHashMap.forEach((id, uuid) -> {
+            if (id % 10 == 0) {
+                System.out.println(String.format("%s: %s", id, uuid));
+            }
+        });
+
+        UUID searchResult = concurrentHashMap.search(threshold, (id, uuid) -> {
+            if (String.valueOf(uuid).startsWith(String.valueOf(id))) {
+                return uuid;
+            }
+            return null;
+        });
+
+        System.out.println(searchResult);
+    }
+}
+package com.winterbe.java8.samples.misc;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/**
+ * @author Benjamin Winterberg
+ */
+public class Files1 {
+
+    public static void main(String[] args) throws IOException {
+        testWalk();
+        testFind();
+        testList();
+        testLines();
+        testReader();
+        testWriter();
+        testReadWriteLines();
+        testReaderLines();
+    }
+
+    private static void testReaderLines() throws IOException {
+        Path path = Paths.get("res/nashorn1.js");
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            long countPrints = reader
+                    .lines()
+                    .filter(line -> line.contains("print"))
+                    .count();
+            System.out.println(countPrints);
+        }
+    }
+
+    private static void testWriter() throws IOException {
+        Path path = Paths.get("res/output.js");
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            writer.write("print('Hello World');");
+        }
+    }
+
+    private static void testReader() throws IOException {
+        Path path = Paths.get("res/nashorn1.js");
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            System.out.println(reader.readLine());
+        }
+    }
+
+    private static void testWalk() throws IOException {
+        Path start = Paths.get("");
+        int maxDepth = 5;
+        try (Stream<Path> stream = Files.walk(start, maxDepth)) {
+            String joined = stream
+                    .map(String::valueOf)
+                    .filter(path -> path.endsWith(".js"))
+                    .collect(Collectors.joining("; "));
+            System.out.println("walk(): " + joined);
+        }
+    }
+
+    private static void testFind() throws IOException {
+        Path start = Paths.get("");
+        int maxDepth = 5;
+        try (Stream<Path> stream = Files.find(start, maxDepth, (path, attr) ->
+                String.valueOf(path).endsWith(".js"))) {
+            String joined = stream
+                    .sorted()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining("; "));
+            System.out.println("find(): " + joined);
+        }
+    }
+
+    private static void testList() throws IOException {
+        try (Stream<Path> stream = Files.list(Paths.get(""))) {
+            String joined = stream
+                    .map(String::valueOf)
+                    .filter(path -> !path.startsWith("."))
+                    .sorted()
+                    .collect(Collectors.joining("; "));
+            System.out.println("list(): " + joined);
+        }
+    }
+
+    private static void testLines() throws IOException {
+        try (Stream<String> stream = Files.lines(Paths.get("res/nashorn1.js"))) {
+            stream
+                    .filter(line -> line.contains("print"))
+                    .map(String::trim)
+                    .forEach(System.out::println);
+        }
+    }
+
+    private static void testReadWriteLines() throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("res/nashorn1.js"));
+        lines.add("print('foobar');");
+        Files.write(Paths.get("res", "nashorn1-modified.js"), lines);
+    }
+}
+package com.winterbe.java8.samples.misc;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author Benjamin Winterberg
+ */
+public class Maps1 {
+
+    public static void main(String[] args) {
+        Map<Integer, String> map = new HashMap<>();
+
+        for (int i = 0; i < 10; i++) {
+            map.putIfAbsent(i, "val" + i);
+        }
+
+        map.forEach((id, val) -> System.out.println(val));
+
+
+        map.computeIfPresent(3, (num, val) -> val + num);
+        System.out.println(map.get(3));             // val33
+
+        map.computeIfPresent(9, (num, val) -> null);
+        System.out.println(map.containsKey(9));     // false
+
+        map.computeIfAbsent(23, num -> "val" + num);
+        System.out.println(map.containsKey(23));    // true
+
+        map.computeIfAbsent(3, num -> "bam");
+        System.out.println(map.get(3));             // val33
+
+        System.out.println(map.getOrDefault(42, "not found"));      // not found
+
+        map.remove(3, "val3");
+        System.out.println(map.get(3));             // val33
+
+        map.remove(3, "val33");
+        System.out.println(map.get(3));             // null
+
+        map.merge(9, "val9", (value, newValue) -> value.concat(newValue));
+        System.out.println(map.get(9));             // val9
+
+        map.merge(9, "concat", (value, newValue) -> value.concat(newValue));
+        System.out.println(map.get(9));             // val9concat
+    }
+
+}package com.winterbe.java8.samples.misc;
+
+/**
+ * @author Benjamin Winterberg
+ */
+public class Math1 {
+
+    public static void main(String[] args) {
+        testMathExact();
+        testUnsignedInt();
+    }
+
+    private static void testUnsignedInt() {
+        try {
+            Integer.parseUnsignedInt("-123", 10);
+        }
+        catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+
+        long maxUnsignedInt = (1l << 32) - 1;
+        System.out.println(maxUnsignedInt);
+
+        String string = String.valueOf(maxUnsignedInt);
+
+        int unsignedInt = Integer.parseUnsignedInt(string, 10);
+        System.out.println(unsignedInt);
+
+        String string2 = Integer.toUnsignedString(unsignedInt, 10);
+        System.out.println(string2);
+
+        try {
+            Integer.parseInt(string, 10);
+        }
+        catch (NumberFormatException e) {
+            System.err.println("could not parse signed int of " + maxUnsignedInt);
+        }
+    }
+
+    private static void testMathExact() {
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MAX_VALUE + 1);
+
+        try {
+            Math.addExact(Integer.MAX_VALUE, 1);
+        }
+        catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
+        }
+
+        try {
+            Math.toIntExact(Long.MAX_VALUE);
+        }
+        catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
+package com.winterbe.java8.samples.misc;
+
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/**
+ * @author Benjamin Winterberg
+ */
+public class String1 {
+
+    public static void main(String[] args) {
+        testJoin();
+        testChars();
+        testPatternPredicate();
+        testPatternSplit();
+    }
+
+    private static void testChars() {
+        String string = "foobar:foo:bar"
+                .chars()
+                .distinct()
+                .mapToObj(c -> String.valueOf((char) c))
+                .sorted()
+                .collect(Collectors.joining());
+        System.out.println(string);
+    }
+
+    private static void testPatternSplit() {
+        String string = Pattern.compile(":")
+                .splitAsStream("foobar:foo:bar")
+                .filter(s -> s.contains("bar"))
+                .sorted()
+                .collect(Collectors.joining(":"));
+        System.out.println(string);
+    }
+
+    private static void testPatternPredicate() {
+        long count = Stream.of("bob@gmail.com", "alice@hotmail.com")
+                .filter(Pattern.compile(".*@gmail\\.com").asPredicate())
+                .count();
+        System.out.println(count);
+    }
+
+    private static void testJoin() {
+        String string = String.join(":", "foobar", "foo", "bar");
+        System.out.println(string);
+    }
+}
+
