@@ -1,11 +1,11 @@
-mvn clean	_ target directory.
-mvn validate	_ if the project is correct.
-mvn compile	_ source code, classes stored in target/classes.
-mvn test	Run _ 
-mvn package	Take the compiled code and package it in its distributable format, e.g. JAR, WAR.
-mvn verify	Run any checks to verify the MVN package is valid and meets quality criteria.
-mvn install	Install the package into the local repository.
-mvn deploy	Copies the final MVN package to the remote repository.
+mvn clean	
+mvn validate	
+mvn compile	
+mvn test	
+mvn package	
+mvn verify	
+mvn install	
+mvn deploy	
 
 mvn dependency:tree
 mvn dependency:analyze
