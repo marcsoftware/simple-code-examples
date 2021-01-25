@@ -1,3 +1,4 @@
+<!-- in this mode user presses space key and has to retype from memory-->
 <!DOCTYPE html>
 <html>
 
@@ -76,7 +77,7 @@ function parseFile(){
     
     //document.getElementById("que").innerHTML=file[page];
     //playAudio(file[page]);
-    document.getElementById("que").innerHTML=file[page];
+    
 
      ans_key = file[page].trim();
     //document.getElementById("ans_key").innerHTML=ans_key;
@@ -195,12 +196,12 @@ function feedback(text){
 </script>
 <div>
 
-<span id='page'></span><br/>
-<span id='que'>x</span>
-
-<input type="text" id='input' onkeyup='checkInput(this.value)'/> 
+<span id='page'></span><span id='que'></span><br/>
 
 <span id='ans_key'></span><br/>
+<input type="text" id='input' onkeyup='checkInput(this.value)'/> 
+
+
 <span id='feedback'></span>
 <span id='color'></span>
 </div>
