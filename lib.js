@@ -119,7 +119,7 @@ var global_file='';
 
          document.getElementById('data').innerHTML=data;
          
-        parse();
+        
         
         // handle data
     }
