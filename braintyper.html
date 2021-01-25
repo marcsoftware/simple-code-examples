@@ -163,28 +163,24 @@ function checkInput(input){
 //
 //-----------------------------------------------------------------------------
 function getCookie(cname) {
-  var name = file_name+cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
+  //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
 
-
-  return 0;
 }
 
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+function setCookie(cname) {
+  //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
+
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
 function handleCorrectAns(){
-    
+    drawContext();
     document.getElementById('input').value='';
     page++;
 
@@ -193,11 +189,17 @@ if(page>=file.length-1){
   document.getElementById("feedback").innerHTML='---------YOU WIN-------------';
 
 }
-    document.cookie = file_name+"page="+page+"; expires=Thu, 18 Dec 3013 12:00:00 UTC;SameSite=None; Secure"; 
+    setCookie();
 
     parseFile();
 }
 
+//-----------------------------------------------------------------------------
+// draw the surrounding code.
+//-----------------------------------------------------------------------------
+function drawContext(){
+
+}
 
 //-----------------------------------------------------------------------------
 //
