@@ -20,7 +20,6 @@
                 });
         ConcurrentUtils.stop(executor);
         System.out.format("Accumulate: %d\n", atomicInt.get());
-
 //
         atomicInt.set(0);
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -28,17 +27,14 @@
                 .forEach(i -> executor.submit(atomicInt::incrementAndGet));
         ConcurrentUtils.stop(executor);
         System.out.format("Increment: Expected=%d; Is=%d\n", NUM_INCREMENTS, atomicInt.get());
-
 //
         CompletableFuture<String> future = new CompletableFuture<>();
         future.complete("42");
         future
                 .thenAccept(System.out::println)
                 .thenAccept(v -> System.out.println("done"));
-
 //
         System.out.println("Parallelism: " + ForkJoinPool.getCommonPoolParallelism());
-    
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
         map.putIfAbsent("foo", "bar");
         map.putIfAbsent("han", "solo");
@@ -47,7 +43,6 @@
         String reduced = map.reduce(1, (key, value) -> key + "=" + value,
                 (s1, s2) -> s1 + ", " + s2);
         System.out.println(reduced);
-    
   //  
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
         map.putIfAbsent("foo", "bar");
@@ -73,7 +68,6 @@
         });
         System.out.println(result2);
 //
-    
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
         map.putIfAbsent("foo", "bar");
         map.putIfAbsent("han", "solo");
@@ -82,7 +76,6 @@
         map.forEach(1, (key, value) -> System.out.printf("key: %s; value: %s; thread: %s\n", key, value, Thread.currentThread().getName()));
 //        map.forEach(5, (key, value) -> System.out.printf("key: %s; value: %s; thread: %s\n", key, value, Thread.currentThread().getName()));
         System.out.println(map.mappingCount());
-
 //
 public class ConcurrentUtils {
     public static void stop(ExecutorService executor) {
@@ -145,9 +138,7 @@ public class Executors1 {
         }
     }
 }
-
 //
-  
         ExecutorService executor = Executors.newFixedThreadPool(1);
         Future<Integer> future = executor.submit(() -> {
             try {
@@ -160,7 +151,6 @@ public class Executors1 {
         });
         future.get(1, TimeUnit.SECONDS);
 //
-
         ExecutorService executor = Executors.newFixedThreadPool(1);
         Future<Integer> future = executor.submit(() -> {
             try {
@@ -190,7 +180,6 @@ public class Executors1 {
         System.out.println("future done: " + future.isDone());
         System.out.print("result: " + result);
         executor.shutdownNow();
-    
     //
         ExecutorService executor = Executors.newWorkStealingPool();
         List<Callable<String>> callables = Arrays.asList(
@@ -256,8 +245,6 @@ public class Executors1 {
         System.out.printf("Remaining Delay: %sms\n", remainingDelay);
     }
 }
-
-
 public class Lock1 {
     private static final int NUM_INCREMENTS = 10000;
     private static ReentrantLock lock = new ReentrantLock();
@@ -282,7 +269,6 @@ public class Lock1 {
         System.out.println(count);
     }
 }
-
 public class Lock2 {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -304,7 +290,6 @@ public class Lock2 {
         ConcurrentUtils.stop(executor);
     }
 }
-
 public class Lock3 {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -333,7 +318,6 @@ public class Lock3 {
         ConcurrentUtils.stop(executor);
     }
 }
-
 public class Lock4 {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -362,7 +346,6 @@ public class Lock4 {
         ConcurrentUtils.stop(executor);
     }
 }
-
 public class Lock5 {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -430,7 +413,6 @@ public class LongAccumulator1 {
         System.out.format("Add: %d\n", accumulator.getThenReset());
     }
 }
-
 public class LongAdder1 {
     private static final int NUM_INCREMENTS = 10000;
     private static LongAdder adder = new LongAdder();
@@ -453,7 +435,6 @@ public class LongAdder1 {
         System.out.format("Increment: Expected=%d; Is=%d\n", NUM_INCREMENTS, adder.sumThenReset());
     }
 }
-
 public class Semaphore1 {
     private static final int NUM_INCREMENTS = 10000;
     private static Semaphore semaphore = new Semaphore(1);

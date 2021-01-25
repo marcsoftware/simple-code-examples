@@ -75,7 +75,8 @@ function parseFile(){
 
     
     //document.getElementById("que").innerHTML=file[page];
-    playAudio(file[page]);
+    //playAudio(file[page]);
+    document.getElementById("que").innerHTML=file[page];
 
      ans_key = file[page].trim();
     //document.getElementById("ans_key").innerHTML=ans_key;
@@ -194,7 +195,7 @@ function feedback(text){
 <div>
 
 <span id='page'></span><br/>
-<span id='que'></span>
+<span id='que'>x</span>
 
 <input type="text" id='input' onkeyup='checkInput(this.value)'/> 
 
