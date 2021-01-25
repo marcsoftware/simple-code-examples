@@ -89,6 +89,7 @@ function parseFile(){
 //
 //-----------------------------------------------------------------------------
  async  function doGet(url) {
+   url=url.replace(/%2F/g,"/");
       let response = await fetch(url);
 
     console.log(response.status); // 200
