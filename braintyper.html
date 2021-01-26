@@ -101,6 +101,7 @@ function parseFile(){
          //file.shift();// shift() deletes the empty element.
         
         parseFile();
+        drawContext();
         // handle data
     }
 }
@@ -205,7 +206,7 @@ if(page>=file.length-1){
 // draw the surrounding code.
 //-----------------------------------------------------------------------------
 function drawContext(){
-    document.getElementById('context').innerHTML="DRAW HERE";
+    document.getElementById('context').innerHTML=file.slice(page+1).join("<br/>");
 
 }
 
