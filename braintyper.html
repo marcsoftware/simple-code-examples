@@ -48,7 +48,7 @@ function init() {
   page=parseInt(getCookie("page"));
   doGet("study_material/"+file_name+'.txt');
 
-    
+    drawContext();
   
  
  
@@ -77,7 +77,7 @@ function parseFile(){
     //document.getElementById("que").innerHTML=file[page];
     //playAudio(file[page]);
     
-
+    page = getCookie();
      ans_key = file[page].trim();
     //document.getElementById("ans_key").innerHTML=ans_key;
 }
@@ -163,6 +163,13 @@ function checkInput(input){
 //
 //-----------------------------------------------------------------------------
 function getCookie(cname) {
+  var p = localStorage.getItem(`${file_name}braintyper`); 
+  
+  if( p==='NaN'){
+    
+    p=0;
+  }
+  return p;
   //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
 
 }
@@ -171,7 +178,7 @@ function getCookie(cname) {
 //
 //-----------------------------------------------------------------------------
 function setCookie(cname) {
-  //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
+  localStorage.setItem(`${file_name}braintyper`,page);
 
 }
 
@@ -180,10 +187,10 @@ function setCookie(cname) {
 //
 //-----------------------------------------------------------------------------
 function handleCorrectAns(){
-    drawContext();
+    
     document.getElementById('input').value='';
     page++;
-
+drawContext();
 if(page>=file.length-1){
   page=0;
   document.getElementById("feedback").innerHTML='---------YOU WIN-------------';
@@ -198,6 +205,7 @@ if(page>=file.length-1){
 // draw the surrounding code.
 //-----------------------------------------------------------------------------
 function drawContext(){
+    //document.getElementById('feedback').innerHTML="DRAW HERE";
 
 }
 
@@ -231,6 +239,7 @@ function feedback(input){
 
 <span id='feedback'></span>
 <span id='color'></span>
+<pre id='context'>x</pre>
 </div>
 </body>
 </html>
