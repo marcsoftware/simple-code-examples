@@ -2,6 +2,8 @@ GIT
 
 https://wiki.spheredev.org/index.php/Git_for_the_lazy
 
+this look like a good git TLDR; https://www.atlassian.com/git/tutorials/syncing
+
 git ignore stuff - https://www.pluralsight.com/guides/how-to-use-gitignore-file
 
 MAVEN
