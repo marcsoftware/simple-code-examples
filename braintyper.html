@@ -15,6 +15,11 @@
     input{
       width:90%;
     }
+
+
+    #context{
+      color:grey;
+    }
 </style>
 <body>
 
@@ -101,7 +106,9 @@ function parseFile(){
          //file.shift();// shift() deletes the empty element.
         
         parseFile();
+
         drawContext();
+        feedback('');
         // handle data
     }
 }
@@ -206,7 +213,10 @@ if(page>=file.length-1){
 // draw the surrounding code.
 //-----------------------------------------------------------------------------
 function drawContext(){
-    document.getElementById('context').innerHTML=file.slice(page+1).join("<br/>");
+
+    var before = file.slice(page-3,page).join("<br/>");
+    var after =  file.slice(page+1).join("<br/>");
+    document.getElementById('context').innerHTML=`${before}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX<br/>${after}`;
 
 }
 
