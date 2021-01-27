@@ -80,6 +80,8 @@ function init() {
   doGet(file_name);
 
   
+
+  
 }
 
 
@@ -110,7 +112,7 @@ function getCookie(cname) {
 //
 //-----------------------------------------------------------
 function hideTyped(number){
-  document.getElementById('data').innerHTML=file.slice(number).join("\n");
+  document.getElementById('data').innerHTML=file.slice(number).join("\n").replace(/</g,"&lt;");
 }
 //-----------------------------------------------------------
 //

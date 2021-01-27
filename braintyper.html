@@ -132,7 +132,7 @@ function compare(left,right){
     right=right.replace(/\s/g,"");
 
 
-    feedback(left);
+    
     left=left.toLowerCase().trim();
     right=right.toLowerCase().trim();
     return left === right;
@@ -146,7 +146,7 @@ function checkInput(input){
   feedback(input);
     if(input==" "){ //if user enter space then flash the word and replay the audio
       
-      document.getElementById('ans_key').innerHTML=ans_key;
+      document.getElementById('ans_key').innerHTML=ans_key.replace(/</g,"&lt;"); // replace so the it will actually render.
       document.getElementById('input').value="";
       setTimeout(hideAnswere, 150);
         return;
