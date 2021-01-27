@@ -43,85 +43,83 @@
 // forward to user to another page
 //----------------------------------------------------
 function forward(handle){
-    var both =handle.innerHTML.split(",");
-    window.location.href = `file:///C:/Users/marc/Desktop/simple-code-examples/${both[1]}.html?name=${both[0]}`
+    var filename =handle.innerHTML.trim();
+    var mode = getRadioSelection();
+    window.location.href = `file:///C:/Users/marc/Desktop/simple-code-examples/${mode}.html?name=${filename}`
 }
+
+
+
+//----------------------------------------------------
+// get value of radio button
+//----------------------------------------------------
+
+function getRadioSelection() { 
+    var ele = document.getElementsByName('mode'); 
+      
+    for(i = 0; i < ele.length; i++) { 
+        if(ele[i].checked) 
+            return ele[i].value; 
+    } 
+} 
+
 </script>
 
 
 <div class='blank'>
     CODE
 </div>
-
 <div class='hover'>
 
-    java8 tutorial overview: 
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/typer.html?name=java8">typer</a><br/>
+   <input type="radio" id="option1" name="mode" value="braintyper" checked>
+  <label for="male">braintyper</label>
+  <input type="radio" id="option2" name="mode" value="typer">
+  <label for="female">typer</label>
+  <input type="radio" id="option3" name="mode" value="cold">
+  <label for="other">cold</label><br/>
+</div>
 
-    java8 concurrency giant:
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/typer.html?name=java8/giant">typer</a>
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/braintyper.html?name=java8/giant">brain</a>
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/cold.html?name=java8/giant">cold</a><br/>
+<div class='hover'>
+    java 8 tutorial:
+        <span onclick='forward(this)'>java8</span><br/>    
+    java 8 concurrany giant:
+        <span onclick='forward(this)'>java8/giant</span><br/>    
+    java 8 concurrancy tldr:
+        <span onclick='forward(this)'>java8-concurrenty-tldr</span><br/>    
+  
 
-
-    java8 concurrency tldr:
-    <a href="file:///C:/Users/marc/Desktop/simple-code-examples/typer.html?name=java8-concurrenty-tldr">typer</a><br/>
 
  
 </div>
 
 <div class='hover'>
 
-  
+    
+    
+    
+    <span onclick='forward(this)'>java8/Atomic1.java</span><br/>    
+    <span onclick='forward(this)'>java8/ConcurrentUtils.java</span><br/>
+    <span onclick='forward(this)'>java8/CompletableFuture1.java</span><br/>
+    <span onclick='forward(this)'>java8/ConcurrentHashMap1.java</span><br/>
+    <span onclick='forward(this)'>java8/Executors1.java</span><br/>
+    <span onclick='forward(this)'>java8/Executors2.java</span><br/>
+    <span onclick='forward(this)'>java8/Executors3.java</span><br/>
+    <span onclick='forward(this)'>java8/Lock1.java</span><br/>
+    <span onclick='forward(this)'>java8/Lock2.java</span><br/>
+    <span onclick='forward(this)'>java8/Lock3.java</span><br/>
+    <span onclick='forward(this)'>java8/Lock4.java</span><br/>
+    <span onclick='forward(this)'>java8/Lock5.java</span><br/>
+    <span onclick='forward(this)'>java8/Lock6.java</span><br/>
+    <span onclick='forward(this)'>java8/LongAccumulator1.java</span><br/>
+    <span onclick='forward(this)'>java8/LongAdder1.java</span><br/>
+    <span onclick='forward(this)'>java8/Semaphore1.java</span><br/>
+    <span onclick='forward(this)'>java8/Semaphore2.java</span><br/>
+    <span onclick='forward(this)'>java8/Synchronized1.java</span><br/>
+    <span onclick='forward(this)'>java8/Synchronized2.java</span><br/>
+    <span onclick='forward(this)'>java8/Threads1.java</span><br/>
 
-    
-    
-    
-    <span onclick='forward(this)'>java8/Atomic1.java,typer</span><br/>
-    
-    
-    <span onclick='forward(this)'>java8/ConcurrentUtils.java,typer</span><br/>
 
-    <span onclick='forward(this)'>java8/CompletableFuture1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/ConcurrentHashMap1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Executors1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Executors2.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Executors3.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Lock1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Lock2.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Lock3.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Lock4.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Lock5.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Lock6.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/LongAccumulator1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/LongAdder1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Semaphore1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Semaphore2.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Synchronized1.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Synchronized2.java,typer</span><br/>
-    <span onclick='forward(this)'>java8/Threads1.java,typer</span><br/>
 
-----------<br/>
-<span onclick='forward(this)'>java8/Atomic1.java,cold</span><br/>
-<span onclick='forward(this)'>java8/ConcurrentUtils.java,cold</span><br/>
-<span onclick='forward(this)'>java8/CompletableFuture1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/ConcurrentHashMap1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Executors1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Executors2.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Executors3.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Lock1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Lock2.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Lock3.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Lock4.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Lock5.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Lock6.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/LongAccumulator1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/LongAdder1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Semaphore1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Semaphore2.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Synchronized1.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Synchronized2.java,cold</span><br/>
-    <span onclick='forward(this)'>java8/Threads1.java,cold</span><br/>
     
 
 </div>
