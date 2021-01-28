@@ -1,3 +1,6 @@
+git remote show origin
+git branch -avv
+
 git config --global --unset-all
 git config --global credential.helper wincred
 
