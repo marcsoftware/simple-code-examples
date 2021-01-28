@@ -230,7 +230,7 @@ function drawContext(){
 
     var before = file.slice(page-3,page).join("<br/>");
     var after =  file.slice(page+1).join("<br/>");
-    document.getElementById('context').innerHTML=`${before}<span id='feedback'></span><br/>${after}`;
+    document.getElementById('context').innerHTML=`${before}<span id='feedback'></span><br/><span id='ans_key'></span><br/>${after}`;
 
 }
 
@@ -249,7 +249,7 @@ function feedback(input){
           result+="❗️";
         }
     }
-    document.getElementById("feedback").innerHTML=result;
+    document.getElementById("feedback").innerHTML=result.replace(/</g,"&lt;");
 }
 
 
@@ -258,7 +258,7 @@ function feedback(input){
 
 <span id='page'></span><span id='que'></span><br/>
 
-<span id='ans_key'></span><br/>
+<br/>
 <input type="text" id='input' onkeyup='checkInput(this.value)'/> <br/>
 
 
