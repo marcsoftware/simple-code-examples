@@ -208,8 +208,10 @@ function setCookie(cname) {
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+var bar=0;
 function handleCorrectAns(){
-    
+    bar++;
+    document.getElementById('bar').value=bar;
     document.getElementById('input').value='';
     page++;
 drawContext();
@@ -256,7 +258,7 @@ function feedback(input){
 </script>
 <div>
 
-<span id='page'></span><span id='que'></span><br/>
+<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="100"> 32% </progress><br/>
 
 <br/>
 <input type="text" id='input' onkeyup='checkInput(this.value)'/> <br/>
