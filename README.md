@@ -26,6 +26,8 @@ extra git repo for java 8 . https://github.com/java8/Java8InAction
 
 java collections - https://www.geeksforgeeks.org/collections-in-java-2/
 
+good theory in begining https://www.youtube.com/watch?v=hBh_CC5y8-s
+
 MYSQL 
 
 interactive shell and has quizes https://sqlzoo.net/wiki/SELECT_basics
