@@ -20,6 +20,20 @@
     #context{
       color:grey;
     }
+
+
+    #feedback{
+      background-color: #121212;
+      color:white;
+      padding:5px;
+
+    }
+
+    #ans_key{
+      margin-top: 5px;
+      padding:5px;
+      color:red;
+    }
 </style>
 <body>
 
@@ -224,6 +238,7 @@ if(page>=file.length-1){
     setCookie();
 
     parseFile();
+    checkInput(" ");
 }
 
 //-----------------------------------------------------------------------------
@@ -231,9 +246,9 @@ if(page>=file.length-1){
 //-----------------------------------------------------------------------------
 function drawContext(){
 
-    var before = file.slice(page-3,page).join("<br/>");
-    var after =  file.slice(page+1).join("<br/>");
-    document.getElementById('context').innerHTML=`${before}<span id='feedback'></span><br/><span id='ans_key'></span><br/>${after}`;
+    var before = file.slice(page-3,page).join("");
+    var after =  file.slice(page+1).join("");
+    document.getElementById('context').innerHTML=`${before}<br/><span id='feedback'></span><br/><br/><span id='ans_key'></span><br/>${after}`;
 
 }
 
@@ -246,7 +261,7 @@ function feedback(input){
      var result='';
      
     for(var i=0;i<new_key.length;i++){
-        if(new_key[i].toLowerCase()===new_input[i]){
+        if(new_key[i].toLowerCase()===new_input[i] || new_key[i].toUpperCase()===new_input[i]){
           result+=new_key[i];
         }else{
           result+="❗️";
@@ -259,7 +274,7 @@ function feedback(input){
 </script>
 <div>
 
-<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="100"> 32% </progress><br/>
+<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="15"> 32% </progress><br/>
 
 <br/>
 <input type="text" id='input' onkeyup='checkInput(this.value)'/> <br/>
