@@ -176,7 +176,7 @@ function checkInput(input){
       document.getElementById('data').innerHTML=text.slice(1);
 
    }else{
-    
+
    }
 
 }
@@ -215,7 +215,7 @@ function setCookie(cname) {
 <span id='page'></span><span id='que'></span><progress id="bar" value="0" max="25"> 32% </progress><br/>
 
 <br/>
-<input type="text" id='input' onkeyup='checkInput(this.value)'/> <br/>
+<input type="text" id='input' onkeydown='checkInput(this.value)' onkeyup='checkInput(this.value)'/> <br/>
 <pre id='typed'></pre>
 <pre id='data'></pre>
 
