@@ -62,7 +62,7 @@
  file='x';
  ans_key = '';
  var file_name;
- window.onload=init();
+ window.onload=init;
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
@@ -76,7 +76,8 @@ function init() {
    file_name = (urlParams+"").split("=")[1];
   document.title=file_name;
 
-  page=parseInt(getCookie("page"));
+  page=(getCookie(file_name));
+  document.getElementById('input').value=page;
   doGet(file_name);
 
   
@@ -90,23 +91,14 @@ function init() {
 //
 //-----------------------------------------------------------------------------
 function getCookie(cname) {
-  var name = file_name+cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
 
 
-  return 0;
+  return  localStorage.getItem(`${file_name}typer`); 
+  
+ 
+  //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
+
 }
-
 
 //-----------------------------------------------------------
 //
@@ -118,8 +110,9 @@ function hideTyped(number){
 //
 //-----------------------------------------------------------
 function getLineNumber(handle){
-  var cursor_index = handle.selectionStart;
 
+  var cursor_index = handle.selectionStart;
+  setCookie(handle.value);
    var sub='';
    var line_number;
    sub = handle.value.substring(0,cursor_index);
@@ -135,11 +128,18 @@ function getLineNumber(handle){
    hideTyped(line_number);
 }
 
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function setCookie(value) {
+  localStorage.setItem(`${file_name}typer`,value);
+
+}
 
 
 </script>
 <span id='lineNumber'>#</span>
-<textarea onkeyup="getLineNumber(this)" ></textarea>
+<textarea onkeydown="getLineNumber(this)" id='input'></textarea>
 <div id='data'>x</div><br/>
 
 

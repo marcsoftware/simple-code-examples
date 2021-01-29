@@ -31,3 +31,7 @@ good theory in begining https://www.youtube.com/watch?v=hBh_CC5y8-s
 MYSQL 
 
 interactive shell and has quizes https://sqlzoo.net/wiki/SELECT_basics
+
+SPRING BOOT REST
+
+huge repo but need to download https://www.baeldung.com/rest-with-spring-series
