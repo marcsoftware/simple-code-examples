@@ -1,0 +1,207 @@
+<!-- in this mode user presses space key and has to retype from memory-->
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<style>
+    div{
+        margin: auto;
+  width: 80%;
+  border: 3px solid white;
+  padding: 10px;
+    }
+
+
+    input{
+      width:90%;
+    }
+
+
+    #context{
+      color:grey;
+    }
+
+
+    #feedback{
+      /*correct*/
+      background-color: #121212;
+      color:white;
+      
+
+    }
+
+    .wrong{
+      color:red;
+      background-color: white;
+    }
+
+    #ans_key{
+      margin-top: 5px;
+      padding:5px;
+      color:red;
+    }
+</style>
+<body>
+
+
+
+ <script src="lib.js"></script> 
+
+<script>
+
+//-----------------------------------------------------------------------------
+// global variables
+//-----------------------------------------------------------------------------    
+
+ file='x';
+ ans_key = '';
+ var file_name;
+ window.onload=init;
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+   
+function init() {
+  const queryString = window.location.search;
+  console.log(queryString);
+
+  const urlParams = new URLSearchParams(queryString);
+  
+   file_name = (urlParams+"").split("=")[1];
+  document.title=file_name;
+
+  page=parseInt(getCookie("page"));
+  doGet(file_name);
+
+
+  
+ 
+ 
+  
+}
+
+
+
+//-----------------------------------------------------------------------------
+// draw the question
+//-----------------------------------------------------------------------------
+var page;
+function parseFile(x){
+    
+    
+    document.getElementById("page").innerHTML=(page+1)+"/"+file.length;
+
+    page = getCookie();
+     ans_key = file[page].trim();
+
+     document.getElementById('data').innerHTML=x;
+}
+
+
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+ async  function doGet(url) {
+
+     url = "study_material/"+url;
+    if(url.includes(".java")){
+
+    }else{
+        url+='.txt';
+    }
+
+
+   url=url.replace(/%2F/g,"/");
+   console.log(url);
+      let response = await fetch(url);
+
+    console.log(response.status); // 200
+    console.log(response.statusText); // OK
+
+    if (response.status === 200) {
+        let data = await response.text();
+         file = data.split("\n"); 
+         //file.shift();// shift() deletes the empty element.
+        
+        parseFile(data);
+
+  
+        // handle data
+    }
+}
+
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function compare(left,right){
+  left=left.toLowerCase();
+  right=right.toLowerCase();
+    if(left==='`SKIP'){ //let user skip a line.
+        return true;
+    }
+    left=left.replace(/\s/g,"");
+    right=right.replace(/\s/g,"");
+
+
+    
+    left=left.toLowerCase().trim();
+    right=right.toLowerCase().trim();
+    return left === right;
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function checkInput(input){
+  //check one letter at time
+
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function getCookie(cname) {
+  var p = localStorage.getItem(`${file_name}easy`); 
+  
+  if( p==='NaN' || !p){
+    
+    p=0;
+  }
+  return p;
+  //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
+
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function setCookie(cname) {
+  localStorage.setItem(`${file_name}easy`,page);
+
+}
+
+
+
+
+
+
+</script>
+<div>
+
+<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="25"> 32% </progress><br/>
+
+<br/>
+<input type="text" id='input' onkeyup='checkInput(this.value)'/> <br/>
+<pre id='data'></pre>
+
+<span id='color'></span>
+<div id='context'>x</div>
+</div>
+</body>
+</html>
+
