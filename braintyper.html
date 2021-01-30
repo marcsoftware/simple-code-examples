@@ -150,7 +150,7 @@ function hideAnswere(){
 function compare(left,right){
   left=left.toLowerCase();
   right=right.toLowerCase();
-    if(left==='`SKIP'){ //let user skip a line.
+    if(left==='`skip'){ //let user skip a line.
         return true;
     }
     left=left.replace(/\s/g,"");
@@ -246,8 +246,8 @@ if(page>=file.length-1){
 //-----------------------------------------------------------------------------
 function drawContext(){
 
-    var before = file.slice(page-3,page).join("");
-    var after =  file.slice(page+1).join("");
+    var before = file.slice(page-3,page).join("").replace(/</g,'&lt;');
+    var after =  file.slice(page+1).join("").replace(/</g,'&lt;');
     document.getElementById('context').innerHTML=`${before}<br/><span id='feedback'></span><br/><br/><span id='ans_key'></span><br/>${after}`;
 
 }
