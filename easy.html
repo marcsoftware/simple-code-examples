@@ -203,11 +203,15 @@ function checkInput(event,input){
        
        
       var middle = document.getElementById('middle').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
+      var newlineflag=false;
       if(middle.length !== 0){
         middle=middle[0];
+
       }
       if(middle.toLowerCase()===input.toLowerCase() || middle.length===0 || middle.trim().length===0 ){
           document.getElementById('input').value='';
+
+      }else if(middle==='↲' && input.match(/\s/g)!==null){
 
       }else{
         return;
@@ -226,6 +230,9 @@ function checkInput(event,input){
 //-----------------------------------------------------------------------------
 function moveLetter(){
     var middle = document.getElementById('middle').innerHTML;
+    if(middle==='↲'){
+      middle="\n";
+    }
     document.getElementById('left').innerHTML+=middle;  
 
     var right = document.getElementById('right').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
