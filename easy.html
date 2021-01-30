@@ -4,6 +4,15 @@
 
 <meta charset="UTF-8">
 <style>
+
+.space{
+  padding-top:100px;
+}
+#header{
+  position:fixed;
+  
+  margin-top: 0px;
+}
     div{
         margin: auto;
   width: 80%;
@@ -120,7 +129,7 @@ function parseFile(x){
     
 
     var org =x;
-    x=x.slice(page*-1);
+    x=x.slice((page+1)*-1); // negatives numbers will get end of X
     
     document.getElementById('right').innerHTML=x.trim();
      
@@ -262,13 +271,13 @@ console.log(x);
 
 
 </script>
-<div>
+<div id='header'>
 
-<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="25"> 32% </progress><br/>
+  <span id='page'></span><span id='que'></span><progress id="bar" value="0" max="25"> 32% </progress><br/>
+  <input type="text" id='input'  onkeypress='checkInput(event,this.value)'/> <br/>
 
-<br/>
-
-<input type="text" id='input'  onkeypress='checkInput(event,this.value)'/> <br/>
+</div>
+<div class='space'>
 <pre id='left'></pre>
 <pre id='middle'></pre>
 <pre id='right'></pre>
