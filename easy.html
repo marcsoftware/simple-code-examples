@@ -9,7 +9,7 @@
   padding-top:100px;
 }
 #header{
-  position:fixed;
+  
   
   margin-top: 0px;
 }
@@ -26,6 +26,7 @@
     }
 
     #left{
+
       color:green;
       display:inline;
       background-color: white;
@@ -42,19 +43,23 @@
       padding-right: 0px;
       margin-right: :0px;
       animation: blinker 1s linear infinite;
+
+    }
+
+    #right{
+      display:inline;  
     }
 
 @keyframes blinker {
   50% {
     opacity: 0;
   }
-#right{
-  word-break: break-word;
-}
+
   
 
     pre{
       display:inline;
+      float:left;
     }
     #context{
       color:grey;
@@ -144,7 +149,7 @@ function parseFile(x){
       setCookie(page);
     }
     
-
+      document.getElementById('middle').innerHTML=" ";
     document.getElementById('right').innerHTML=x.trim();
      
 }
@@ -299,14 +304,12 @@ function setCookie(x) {
   <input type="text" id='input'  onkeypress='checkInput(event,this.value)'/> <br/>
 
 </div>
-<div class='space'>
-<pre id='left'></pre>
-<pre id='middle'></pre>
-<pre id='right'></pre>
 
-<span id='color'></span>
-<div id='context'>x</div>
-</div>
+<pre id='left'></pre><pre id='middle'></pre><pre id='right'></pre>
+
+
+
+
 </body>
 </html>
 
