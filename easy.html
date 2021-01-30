@@ -232,9 +232,9 @@ function moveLetter(){
 
     // if right[0] is line break convert to space.
     var target = right[0];
-    if(right[0].match(/\s/g) !==null){   
+    if(right[0].match(/\n/g) !==null){   
       
-      target=" ";
+      target="↲";
     }
     document.getElementById('middle').innerHTML=target;
 
