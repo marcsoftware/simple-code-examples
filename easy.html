@@ -17,7 +17,7 @@
     }
 
     #left{
-      color:lightgreen;
+      color:green;
       display:inline;
       background-color: white;
       padding-right: 0px;
@@ -30,6 +30,7 @@
       background-color: #121212;
       padding-right: 0px;
       margin-right: :0px;
+
     }
 
 
@@ -146,7 +147,6 @@ function parseFile(x){
          //file.shift();// shift() deletes the empty element.
         
         parseFile(data);
-
   
         // handle data
     }
@@ -209,8 +209,17 @@ function checkInput(event,input){
 function moveLetter(){
     var middle = document.getElementById('middle').innerHTML;
     document.getElementById('left').innerHTML+=middle;  
-    var right = document.getElementById('right').innerHTML;
+
+    var right = document.getElementById('right').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
+
+    // if right[0] is line break convert to space.
+    console.log('right '+right);
+    if(right[0].trim().length===0){   // TODO this is not working for some reason
+      right[0]=" ";
+    }
     document.getElementById('middle').innerHTML=right[0];
+
+    
     document.getElementById('right').innerHTML=right.slice(1);
 
 }
