@@ -16,7 +16,7 @@
       width:90%;
     }
 
-    #typed{
+    #left{
       color:lightgreen;
       display:inline;
       background-color: #121212;
@@ -104,7 +104,7 @@ function parseFile(x){
     
       
     x=x.slice(page*-1);
-     document.getElementById('data').innerHTML=x.trim();
+     document.getElementById('right').innerHTML=x.trim();
 }
 
 
@@ -172,7 +172,7 @@ function checkInput(input){
 
      
       moveLetter();
-      setCookie(document.getElementById('data').innerHTML.length);
+      setCookie(document.getElementById('right').innerHTML.length);
       document.getElementById('input').value='';
 
  /* if(input===''){
@@ -207,9 +207,9 @@ function checkInput(input){
 //
 //-----------------------------------------------------------------------------
 function moveLetter(){
-    var x = document.getElementById('data').innerHTML;
-    document.getElementById('typed').innerHTML+=x[0];  
-    document.getElementById('data').innerHTML=x.slice(1);
+    var x = document.getElementById('right').innerHTML;
+    document.getElementById('left').innerHTML+=x[0];  
+    document.getElementById('right').innerHTML=x.slice(1);
 
 }
 
@@ -248,8 +248,9 @@ function setCookie(x) {
 
 <br/>
 <input type="text" id='input'  onkeyup='checkInput(this.value)'/> <br/>
-<pre id='typed'></pre>
-<pre id='data'></pre>
+<pre id='left'></pre>
+<pre id='middle'></pre>
+<pre id='right'></pre>
 
 <span id='color'></span>
 <div id='context'>x</div>
