@@ -111,9 +111,9 @@ function parseFile(x){
     document.getElementById("page").innerHTML=(page+1)+"/"+x.length;
 
     
-      
+      var org =x;
     x=x.slice(page*-1);
-     document.getElementById('right').innerHTML=x.trim();
+     document.getElementById('right').innerHTML=org.trim();
      
 }
 
@@ -179,8 +179,9 @@ function compare(left,right){
 //-----------------------------------------------------------------------------
 function checkInput(event,input){
   
-       var letter =  event.keyCode;
-       console.log(letter);
+       var unicode=  event.keyCode;
+       var ch = String.fromCharCode(unicode);
+       input=ch;
        
        
       var middle = document.getElementById('middle').innerHTML;
