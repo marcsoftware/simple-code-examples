@@ -99,12 +99,12 @@ var page;
 function parseFile(x){
     
     
-    document.getElementById("page").innerHTML=(page+1)+"/"+file.length;
+    document.getElementById("page").innerHTML=(page+1)+"/"+x.length;
 
-    page = getCookie();
-     ans_key = file[page].trim();
-
-     document.getElementById('data').innerHTML=x;
+    
+      
+    x=x.slice(page*-1);
+     document.getElementById('data').innerHTML=x.trim();
 }
 
 
@@ -180,13 +180,15 @@ function checkInput(input){
 
 
 
-   if(letter.toLowerCase().includes(text[0].toLowerCase()    )  ) {
+   if(letter.toLowerCase().includes(text[0].toLowerCase()    ) || input==='`' ) {
       document.getElementById('input').value='';
       moveLetter();
 
       if(text[1].match(/\s/g)){
         moveLetter();
       }
+
+      setCookie(document.getElementById('data').innerHTML.length);
    }else{
 
    }
@@ -222,8 +224,8 @@ function getCookie(cname) {
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
-function setCookie(cname) {
-  localStorage.setItem(`${file_name}easy`,page);
+function setCookie(x) {
+  localStorage.setItem(`${file_name}easy`,x);
 
 }
 
