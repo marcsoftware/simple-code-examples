@@ -181,10 +181,11 @@ function checkInput(event,input){
   
        var unicode=  event.keyCode;
        var ch = String.fromCharCode(unicode);
+       
        input=ch;
        
        
-      var middle = document.getElementById('middle').innerHTML;
+      var middle = document.getElementById('middle').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
       if(middle.length !== 0){
         middle=middle[0];
       }
@@ -213,7 +214,7 @@ function moveLetter(){
     var right = document.getElementById('right').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
 
     // if right[0] is line break convert to space.
-    console.log('right '+right);
+    
     if(right[0].trim().length===0){   // TODO this is not working for some reason
       right[0]=" ";
     }
