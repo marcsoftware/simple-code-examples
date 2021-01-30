@@ -48,8 +48,10 @@
   50% {
     opacity: 0;
   }
+#right{
+  word-break: break-word;
 }
-
+  
 
     pre{
       display:inline;
@@ -137,6 +139,12 @@ function parseFile(x){
     var org =x;
     x=x.slice((page+1)*-1); // negatives numbers will get end of X
     
+    if(x.length<10){
+      page=max;
+      setCookie(page);
+    }
+    
+
     document.getElementById('right').innerHTML=x.trim();
     document.getElementById('middle').innerHTML=' ';
      
