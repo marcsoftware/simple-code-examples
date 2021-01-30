@@ -211,7 +211,7 @@ function checkInput(event,input){
       if(middle.toLowerCase()===input.toLowerCase() || middle.length===0 || middle.trim().length===0 ){
           document.getElementById('input').value='';
 
-      }else if(middle==='↲' && input.match(/\s/g)!==null){
+      }else if(middle.includes('↲') && input.match(/\s/g)!==null){
 
       }else{
         return;
@@ -230,7 +230,7 @@ function checkInput(event,input){
 //-----------------------------------------------------------------------------
 function moveLetter(){
     var middle = document.getElementById('middle').innerHTML;
-    if(middle==='↲'){
+    if(middle.includes('↲')){
       middle="\n";
     }
     document.getElementById('left').innerHTML+=middle;  
@@ -241,7 +241,7 @@ function moveLetter(){
     var target = right[0];
     if(right[0].match(/\n/g) !==null){   
       
-      target="↲";
+      target="↲\n";
     }
     document.getElementById('middle').innerHTML=target;
 
