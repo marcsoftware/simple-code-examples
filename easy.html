@@ -107,8 +107,10 @@ function init() {
 //-----------------------------------------------------------------------------
 var page;
 function parseFile(x){
-        
-    document.getElementById("page").innerHTML=(page+1)+"/"+x.length;
+        document.getElementById('right').innerHTML=x;
+        x=document.getElementById('right').innerHTML;
+
+    document.getElementById("page").innerHTML=(page+1)+"/"+x.length; //
     var max = x.length;
 
     if(page>max){
