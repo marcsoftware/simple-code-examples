@@ -239,6 +239,7 @@ if(page>=file.length-1){
 
     parseFile();
     checkInput(" ");
+    document.getElementById('countdown').innerHTML=document.getElementById('context').innerHTML.length;
 }
 
 //-----------------------------------------------------------------------------
@@ -274,7 +275,7 @@ function feedback(input){
 </script>
 <div>
 
-<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="25"> 32% </progress><br/>
+<span id='page'></span><span id='que'></span><progress id="bar" value="0" max="25"> 32% </progress><span id='countdown'></span><br/>
 
 <br/>
 <input type="text" id='input' onkeyup='checkInput(this.value)'/> <br/>
