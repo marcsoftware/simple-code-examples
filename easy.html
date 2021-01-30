@@ -17,8 +17,11 @@
     }
 
     #typed{
-      color:green;
+      color:lightgreen;
       display:inline;
+      background-color: #121212;
+      padding-right: 0px;
+      margin-right: :0px;
     }
 
     pre{
@@ -165,19 +168,39 @@ function compare(left,right){
 //
 //-----------------------------------------------------------------------------
 function checkInput(input){
+ 
+
   if(input===''){
     return;
+  }else{
+    input=input.replace(/\s/g,'')
   }
    var letter=input;
    var text = document.getElementById('data').innerHTML;
+
+
+
    if(letter.toLowerCase().includes(text[0].toLowerCase()    )  ) {
       document.getElementById('input').value='';
-      document.getElementById('typed').innerHTML+=text[0];  
-      document.getElementById('data').innerHTML=text.slice(1);
+      moveLetter();
 
+      if(text[1].match(/\s/g)){
+        moveLetter();
+      }
    }else{
 
    }
+
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function moveLetter(){
+    var x = document.getElementById('data').innerHTML;
+    document.getElementById('typed').innerHTML+=x[0];  
+    document.getElementById('data').innerHTML=x.slice(1);
 
 }
 
