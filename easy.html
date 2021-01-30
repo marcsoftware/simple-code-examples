@@ -19,10 +19,19 @@
     #left{
       color:lightgreen;
       display:inline;
+      background-color: white;
+      padding-right: 0px;
+      margin-right: :0px;
+    }
+
+    #middle{
+      color:lightgreen;
+      display:inline;
       background-color: #121212;
       padding-right: 0px;
       margin-right: :0px;
     }
+
 
     pre{
       display:inline;
@@ -105,6 +114,7 @@ function parseFile(x){
       
     x=x.slice(page*-1);
      document.getElementById('right').innerHTML=x.trim();
+     
 }
 
 
@@ -170,35 +180,21 @@ function compare(left,right){
 function checkInput(input){
      
 
-     
+      var middle = document.getElementById('middle').innerHTML;
+      if(middle.length !== 0){
+        middle=middle[0];
+      }
+      if(middle.toLowerCase()===input.toLowerCase() || middle.length===0 || middle.trim().length===0 ){
+          document.getElementById('input').value='';
+
+      }else{
+        return;
+      }
       moveLetter();
       setCookie(document.getElementById('right').innerHTML.length);
       document.getElementById('input').value='';
 
- /* if(input===''){
-    return;
-  }else{
-    input=input.replace(/\s/g,'')
-  }
-   var letter=input;
-   var text = document.getElementById('data').innerHTML;
 
-
-
-   if(letter.toLowerCase().includes(text[0].toLowerCase()    ) || input==='`' ) {
-      document.getElementById('input').value='';
-      moveLetter();
-
-      if(text[1].match(/\s/g)){
-        moveLetter();
-      }
-
-      setCookie(document.getElementById('data').innerHTML.length);
-   }else{
-
-   }
-
-   */
 
 }
 
@@ -207,9 +203,11 @@ function checkInput(input){
 //
 //-----------------------------------------------------------------------------
 function moveLetter(){
-    var x = document.getElementById('right').innerHTML;
-    document.getElementById('left').innerHTML+=x[0];  
-    document.getElementById('right').innerHTML=x.slice(1);
+    var middle = document.getElementById('middle').innerHTML;
+    document.getElementById('left').innerHTML+=middle;  
+    var right = document.getElementById('right').innerHTML;
+    document.getElementById('middle').innerHTML=right[0];
+    document.getElementById('right').innerHTML=right.slice(1);
 
 }
 
