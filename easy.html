@@ -22,10 +22,12 @@
       background-color: white;
       padding-right: 0px;
       margin-right: :0px;
+      font-weight: bold;
+
     }
 
     #middle{
-      color:lightgreen;
+      color:white;
       display:inline;
       background-color: #121212;
       padding-right: 0px;
@@ -82,6 +84,7 @@
 //-----------------------------------------------------------------------------
    
 function init() {
+  
   const queryString = window.location.search;
   console.log(queryString);
 
@@ -90,13 +93,10 @@ function init() {
    file_name = (urlParams+"").split("=")[1];
   document.title=file_name;
 
-  page=parseInt(getCookie("page"));
+  page=parseInt(getCookie(`${file_name}easy`));
+
   doGet(file_name);
 
-
-  
- 
- 
   
 }
 
@@ -107,14 +107,20 @@ function init() {
 //-----------------------------------------------------------------------------
 var page;
 function parseFile(x){
-    
-    
+        
     document.getElementById("page").innerHTML=(page+1)+"/"+x.length;
+    var max = x.length;
 
+    if(page>max){
+      page=max;
+      setCookie(page);
+    }
     
-      var org =x;
+
+    var org =x;
     x=x.slice(page*-1);
-     document.getElementById('right').innerHTML=org.trim();
+    
+    document.getElementById('right').innerHTML=x.trim();
      
 }
 
@@ -222,6 +228,7 @@ function moveLetter(){
 
     
     document.getElementById('right').innerHTML=right.slice(1);
+    document.getElementById("page").innerHTML=right.length--;
 
 }
 
@@ -244,6 +251,7 @@ function getCookie(cname) {
 //
 //-----------------------------------------------------------------------------
 function setCookie(x) {
+console.log(x);
   localStorage.setItem(`${file_name}easy`,x);
 
 }
