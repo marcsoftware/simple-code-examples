@@ -95,7 +95,7 @@
 function init() {
   
   const queryString = window.location.search;
-  console.log(queryString);
+  
 
   const urlParams = new URLSearchParams(queryString);
   
@@ -152,11 +152,11 @@ function parseFile(x){
 
 
    url=url.replace(/%2F/g,"/");
-   console.log(url);
+   
       let response = await fetch(url);
 
-    console.log(response.status); // 200
-    console.log(response.statusText); // OK
+   
+   
 
     if (response.status === 200) {
         let data = await response.text();
@@ -231,11 +231,12 @@ function moveLetter(){
     var right = document.getElementById('right').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
 
     // if right[0] is line break convert to space.
-    
-    if(right[0].trim().length===0){   // TODO this is not working for some reason
-      right[0]=" ";
+    var target = right[0];
+    if(right[0].match(/\s/g) !==null){   
+      
+      target=" ";
     }
-    document.getElementById('middle').innerHTML=right[0];
+    document.getElementById('middle').innerHTML=target;
 
     
     document.getElementById('right').innerHTML=right.slice(1);
@@ -262,7 +263,7 @@ function getCookie(cname) {
 //
 //-----------------------------------------------------------------------------
 function setCookie(x) {
-console.log(x);
+
   localStorage.setItem(`${file_name}easy`,x);
 
 }
