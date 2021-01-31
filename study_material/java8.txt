@@ -112,7 +112,6 @@ personSupplier.get();   // new Person
 Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
 greeter.accept(new Person("Luke", "Skywalker"));
 //Comparators#
-Comparators are well known from older versions of Java. Java 8 adds various default methods to the interface.
 Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
 Person p1 = new Person("John", "Doe");
 Person p2 = new Person("Alice", "Wonderland");
