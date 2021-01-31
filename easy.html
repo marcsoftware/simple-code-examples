@@ -133,7 +133,8 @@ function init() {
 //-----------------------------------------------------------------------------
 var page;
 function parseFile(x){
-        document.getElementById('right').innerHTML=x;
+
+        document.getElementById('right').innerHTML=x.replace(/</g,"≺").replace(/>/g,"≻");
         x=document.getElementById('right').innerHTML;
 
     document.getElementById("page").innerHTML=(page+1)+"/"+x.length; //
@@ -154,7 +155,7 @@ function parseFile(x){
     }
     
       document.getElementById('middle').innerHTML=" ";
-    document.getElementById('right').innerHTML=x.trim();
+    document.getElementById('right').innerHTML=x.trim().replace(/</g,"&lt;").replace(/>/g,"&gt;");
      
 }
 
@@ -218,14 +219,16 @@ function compare(left,right){
 //
 //-----------------------------------------------------------------------------
 function checkInput(event,input){
-  
+        
+        
+        
        var unicode=  event.keyCode;
        var ch = String.fromCharCode(unicode);
        
        input=ch;
        
-       
-      var middle = document.getElementById('middle').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
+       //≺  ≻
+      var middle = document.getElementById('middle').innerHTML.replace(/≻/g,">").replace(/≺/g,"<");
       var newlineflag=false;
       if(middle.length !== 0){
         middle=middle[0];
@@ -258,7 +261,7 @@ function moveLetter(){
     }
     document.getElementById('left').innerHTML+=middle;  
 
-    var right = document.getElementById('right').innerHTML.replace(/&gt;/g,">").replace(/&lt;/g,"<");
+    var right = document.getElementById('right').innerHTML.replace(/&lt;/g,"<").replace(/>/g,"&gt;");
 
     // if right[0] is line break convert to space.
     var target = right[0];
@@ -269,7 +272,7 @@ function moveLetter(){
     document.getElementById('middle').innerHTML=target;
 
     
-    document.getElementById('right').innerHTML=right.slice(1);
+    document.getElementById('right').innerHTML=right.slice(1).replace(/</g,"&lt;").replace(/>/g,"&gt;");
     document.getElementById("page").innerHTML=right.length--;
 
 }
