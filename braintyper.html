@@ -99,6 +99,7 @@ function parseFile(){
     page = getCookie();
      ans_key = file[page].trim();
     //document.getElementById("ans_key").innerHTML=ans_key;
+
 }
 
 
@@ -128,9 +129,10 @@ function parseFile(){
         let data = await response.text();
          file = data.split("\n"); 
          //file.shift();// shift() deletes the empty element.
-        
+         
         parseFile();
-
+        
+        document.getElementById('countdown').innerHTML=(data.length); // TODO this is wrong on page laod
         drawContext();
         feedback('');
         // handle data
@@ -238,18 +240,21 @@ if(page>=file.length-1){
     setCookie();
 
     parseFile();
+
     checkInput(" ");
-    document.getElementById('countdown').innerHTML=document.getElementById('context').innerHTML.length;
+
+    
 }
 
 //-----------------------------------------------------------------------------
 // draw the surrounding code.
 //-----------------------------------------------------------------------------
 function drawContext(){
-
+    page=parseInt(page);
     var before = file.slice(page-3,page).join("").replace(/</g,'&lt;');
     var after =  file.slice(page+1).join("").replace(/</g,'&lt;');
     document.getElementById('context').innerHTML=`${before}<br/><span id='feedback'></span><br/><br/><span id='ans_key'></span><br/>${after}`;
+    document.getElementById('countdown').innerHTML=after.length; // TODO this is wrong on page laod HERE 
 
 }
 
