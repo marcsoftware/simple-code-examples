@@ -8,6 +8,8 @@ git ignore stuff - https://www.pluralsight.com/guides/how-to-use-gitignore-file
 
 MAVEN
 
+in28mintes github https://github.com/in28minutes/MavenIn28Minutes
+
 https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 
 https://www.jrebel.com/blog/maven-cheat-sheet
@@ -33,5 +35,7 @@ MYSQL
 interactive shell and has quizes https://sqlzoo.net/wiki/SELECT_basics
 
 SPRING BOOT REST
+
+:https://github.com/in28minutes/spring-boot-examples/tree/master/spring-boot-2-rest-service-with-hateoa
 
 huge repo but need to download https://www.baeldung.com/rest-with-spring-series
