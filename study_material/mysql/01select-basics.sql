@@ -1,5 +1,5 @@
 
---01 select bastics
+--01 select basics
 SELECT population FROM world WHERE name = 'Germany'
 SELECT name, gdp/population FROM world WHERE area > 5000000
 SELECT name , continent FROM world WHERE area < 2000 AND gdp > 5000000000
