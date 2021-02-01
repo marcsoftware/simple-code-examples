@@ -1,0 +1,147 @@
+package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.course;
+
+public class Course {
+	private Long id;
+	private String username;
+	private String description;
+
+	public Course() {
+
+	}
+
+	public Course(long id, String username, String description) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.description = description;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Course other = (Course) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
+}package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.course;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
+@RestController
+public class CourseResource {
+
+	@Autowired
+	private CoursesHardcodedService courseManagementService;
+
+	@GetMapping("/instructors/{username}/courses")
+	public List<Course> getAllCourses(@PathVariable String username) {
+		return courseManagementService.findAll();
+	}
+}package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.course;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CoursesHardcodedService {
+
+	private static List<Course> courses = new ArrayList<>();
+	private static long idCounter = 0;
+
+	static {
+		courses.add(new Course(++idCounter, "in28minutes", "Learn Full stack with Spring Boot and Angular"));
+		courses.add(new Course(++idCounter, "in28minutes", "Learn Full stack with Spring Boot and React"));
+		courses.add(new Course(++idCounter, "in28minutes", "Master Microservices with Spring Boot and Spring Cloud"));
+		courses.add(new Course(++idCounter, "in28minutes",
+				"Deploy Spring Boot Microservices to Cloud with Docker and Kubernetes"));
+	}
+
+	public List<Course> findAll() {
+		return courses;
+	}
+}package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.basic.auth;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@Configuration
+@EnableWebSecurity
+public class SpringSecurityConfigurationBasicAuth extends WebSecurityConfigurerAdapter{
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+        .csrf().disable()   
+        .authorizeRequests()
+        .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            //.formLogin().and()
+            .httpBasic();
+    }
+}
