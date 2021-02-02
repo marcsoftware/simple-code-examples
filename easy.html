@@ -133,7 +133,8 @@ function init() {
 //-----------------------------------------------------------------------------
 var page;
 function parseFile(x){
-       x = x.replace(/\s\n/g,"\n");
+       x = x.replace(/[\s]+\n/g,"\n"); //
+       x = x.replace(/&/g,"ℇ");
         x = x.replace(/    /g,"\t");
         document.getElementById('right').innerHTML=x.replace(/</g,"≺").replace(/>/g,"≻");
         x=document.getElementById('right').innerHTML;
@@ -229,7 +230,7 @@ function checkInput(event,input){
        input=ch;
        
        //≺  ≻
-      var middle = document.getElementById('middle').innerHTML.replace(/≻/g,">").replace(/≺/g,"<");
+      var middle = document.getElementById('middle').innerHTML.replace(/≻/g,">").replace(/≺/g,"<").replace(/ℇ/g,"&");
       var newlineflag=false;
       if(middle.length !== 0){
         middle=middle[0];
