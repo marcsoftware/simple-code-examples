@@ -1,3 +1,5 @@
+cat *.java > giant.txt
+
 ls -1
 ls -a
 ls -l
