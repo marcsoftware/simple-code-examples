@@ -1,3 +1,6 @@
 ls -1
 ls -a
 ls -l
+
+mv */* .  # repeat several times to flatten directory.
+rmdir */  # delte empty directories only
