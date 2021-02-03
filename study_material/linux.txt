@@ -6,3 +6,7 @@ ls -l
 
 mv */* .  # repeat several times to flatten directory.
 rmdir */  # delte empty directories only
+
+find foo/ -iname '*.java' -exec cp \{\} dest/ \;
+
+
