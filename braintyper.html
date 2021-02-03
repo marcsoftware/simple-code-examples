@@ -87,9 +87,10 @@ function playAudio(word){
 // draw the question
 //-----------------------------------------------------------------------------
 var page;
+var max_chars;
 function parseFile(){
-    
-    
+     
+    max_chars=file.join().length;
     document.getElementById("page").innerHTML=(page+1)+"/"+file.length;
 
     
@@ -132,7 +133,7 @@ function parseFile(){
          
         parseFile();
         
-        document.getElementById('countdown').innerHTML=(data.length); // TODO this is wrong on page laod
+        document.getElementById('countdown').innerHTML=(data.length)+` /${max_chars}`; // TODO this is wrong on page laod
         drawContext();
         feedback('');
         // handle data
@@ -254,7 +255,7 @@ function drawContext(){
     var before = file.slice(page-3,page).join("").replace(/</g,'&lt;');
     var after =  file.slice(page+1).join("").replace(/</g,'&lt;');
     document.getElementById('context').innerHTML=`${before}<br/><span id='feedback'></span><br/><br/><span id='ans_key'></span><br/>${after}`;
-    document.getElementById('countdown').innerHTML=after.length+(file[page].length); // TODO this is wrong on page laod HERE 
+    document.getElementById('countdown').innerHTML=after.length+(file[page].length)+`/ ${max_chars}`; // TODO this is wrong on page laod HERE 
 
 }
 
