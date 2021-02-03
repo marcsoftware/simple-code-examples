@@ -279,6 +279,7 @@ function moveLetter(){
     
     document.getElementById('right').innerHTML=right.slice(1).replace(/</g,"&lt;").replace(/>/g,"&gt;");
     document.getElementById("page").innerHTML=(right.length--)+"/"+max_chars;
+    document.getElementById("page").scrollIntoView(false);
 
 }
 
