@@ -132,16 +132,19 @@ function init() {
 // draw the question
 //-----------------------------------------------------------------------------
 var page;
+var max_chars;
 function parseFile(x){
        x = x.replace(/[\s]+\n/g,"\n"); //
        x = x.replace(/&/g,"ℇ");
         x = x.replace(/    /g,"\t");
         document.getElementById('right').innerHTML=x.replace(/</g,"≺").replace(/>/g,"≻");
         x=document.getElementById('right').innerHTML;
-
-    document.getElementById("page").innerHTML=(page+1)+"/"+x.length; //
     var max = x.length;
+max_chars=max;
 
+    document.getElementById("page").innerHTML=(page+1)+"/"+max_chars; //
+
+    
     if(page>max){
       page=max;
       setCookie(page);
@@ -275,7 +278,7 @@ function moveLetter(){
 
     
     document.getElementById('right').innerHTML=right.slice(1).replace(/</g,"&lt;").replace(/>/g,"&gt;");
-    document.getElementById("page").innerHTML=right.length--;
+    document.getElementById("page").innerHTML=(right.length--)+"/"+max_chars;
 
 }
 
