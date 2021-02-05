@@ -181,7 +181,7 @@ SELECT mdate,
 SELECT id, title FROM movie WHERE yr=1962
 SELECT yr FROM movie WHERE title = 'Citizen Kane'
 SELECT id, title, yr FROM movie WHERE title LIKE '%star trek%' ORDER BY yr
-SELECT title FROM movie WHERE id IN ( 11768, 11955, 21191)
+SELECT title FROM movie WHERE id IN ( 11111, 22222, 33333)
 SELECT id FROM actor WHERE name = 'Glenn Close'
 SELECT id FROM movie WHERE title = 'Casablanca'
 --
