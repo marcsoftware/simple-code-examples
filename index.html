@@ -31,6 +31,11 @@
      text-decoration:underline;
     }   
 
+    textarea{
+        width: 100%;
+        color:grey;
+        border-color:white;
+    }
 </style>
 <body>
 
@@ -119,11 +124,12 @@ function linter(text){
 
 //-----------------------------------------------------------------------------
 // load the saved textback in to the textareas
+// precondition: hardcode the ids into list array.
 //-----------------------------------------------------------------------------
 function getCookies() {
 
   //list all textarea ids here.
-  var list = "easy,";
+  var list = "easy,concepts,springboot,restapi,javacore,react,java8";
   list = list.split(",");
 
   for(var i=0;i<list.length;i++){
@@ -200,6 +206,7 @@ function getCookies() {
         <span onclick='forward(this)'>java8/nashorn/giant</span><br/>    
         <span onclick='forward(this)'>java8/stream/giant</span><br/>    
         <span onclick='forward(this)'>java8/time/giant</span><br/>    
+        <textarea id="java8" onkeyup="setCookie(this)" ></textarea>
 </div>
 
 
@@ -209,6 +216,7 @@ function getCookies() {
     <span onclick='forward(this)'>react/component_react.txt</span><br/>  
     <span onclick='forward(this)'>react/CourseDataService.js</span><br/>  
     <span onclick='forward(this)'>react/javabackend.txt</span><br/>  
+    <textarea id="react" onkeyup="setCookie(this)" ></textarea>
 </div>
 
 
@@ -216,6 +224,7 @@ function getCookies() {
     :::JAVA CORE:::<br/>
     <span onclick='forward(this)'>javacore/collections.txt</span><br/>  
     <span onclick='forward(this)'>javacore/commands.txt</span><br/>  
+    <textarea id="javacore" onkeyup="setCookie(this)" ></textarea>
 </div>
 <div class='hover'>
                :REST API SAMPLE PROJECT:<br/>
@@ -227,7 +236,7 @@ function getCookies() {
 <span onclick='forward(this)'>restapi_example/StudentNotFoundException.java</span><br/>
 <span onclick='forward(this)'>restapi_example/StudentRepository.java</span><br/>
 <span onclick='forward(this)'>restapi_example/StudentResource.java</span><br/>
-
+<textarea id="restapi" onkeyup="setCookie(this)" ></textarea>
 </div>
 <div class='hover'>
     ::: spring boot -top packages :::<br/>
@@ -247,7 +256,7 @@ function getCookies() {
     spring security: giant<br/>
     spring aop: giant<br/>
 
-
+<textarea id="springboot" onkeyup="setCookie(this)" ></textarea>
 
 </div>
 
@@ -256,6 +265,7 @@ function getCookies() {
     theory: spring framework vs spring boot.<br/>
     theory java.<br/>
     spring framekwork 5 & spring boot 2 <- what is this?
+    <textarea id="concepts" onkeyup="setCookie(this)" ></textarea>
 </div>
 
 
