@@ -36,6 +36,11 @@
         color:grey;
         border-color:white;
     }
+
+    #hover{
+        position: fixed;
+top: 40px; left: 40px;
+    }
 </style>
 <body>
 
@@ -147,9 +152,19 @@ function getCookies() {
   
 }
 
+
+//-----------------------------------------------------------------------------
+// return the legnth of charecter in the file.
+//-----------------------------------------------------------------------------
+
+function getCharLength(handle){
+    var el = document.querySelector("#hover");
+    el.innerHTML=handle.innerHTML;
+
+}
 </script>
 
-
+<span id='hover'></span>
 <div class='blank'>
     CODE
 </div>
@@ -170,25 +185,25 @@ function getCookies() {
 <div class='hover'>
     :::EASY:::<br/>
     mysql:
-    <span onclick='forward(this)'>mysql/giant</span><br/>   
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >mysql/giant</span><br/>   
 
     git:
     
-    <span onclick='forward(this)'>gitexamples</span><br/>    
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >gitexamples</span><br/>    
 
     maven:
     
     
-    <span onclick='forward(this)'>mvnexamples</span><br/>    
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >mvnexamples</span><br/>    
 
     aws list:
     
-    <span onclick='forward(this)'>aws-list</span><br/>    
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >aws-list</span><br/>    
 
      
 
     java commands:
-    <span onclick='forward(this)'>javacommands</span><br/>   
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >javacommands</span><br/>   
     jenkins: ?<br/>
     docker: ?<br/>
     linux: <span onclick='forward(this)'>linux</span><br/>
@@ -199,13 +214,13 @@ function getCookies() {
 
 <div class='hover'>
     ::::java 8 tutorial::::<br/>
-        <span onclick='forward(this)'>java8tutorial</span><br/>    
-        <span onclick='forward(this)'>java8/concurrency/giant</span><br/>    
-        <span onclick='forward(this)'>java8/lambda/giant</span><br/>    
-        <span onclick='forward(this)'>java8/misc/giant</span><br/>    
-        <span onclick='forward(this)'>java8/nashorn/giant</span><br/>    
-        <span onclick='forward(this)'>java8/stream/giant</span><br/>    
-        <span onclick='forward(this)'>java8/time/giant</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8tutorial</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8/concurrency/giant</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8/lambda/giant</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8/misc/giant</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8/nashorn/giant</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8/stream/giant</span><br/>    
+        <span onclick='forward(this)' onmouseover='getCharLength(this)' >java8/time/giant</span><br/>    
         <textarea id="java8" onkeyup="setCookie(this)" ></textarea>
 </div>
 
@@ -213,50 +228,50 @@ function getCookies() {
 
 <div class='hover'>
     :::react:::<br/>
-    <span onclick='forward(this)'>react/component_react.txt</span><br/>  
-    <span onclick='forward(this)'>react/CourseDataService.js</span><br/>  
-    <span onclick='forward(this)'>react/javabackend.txt</span><br/>  
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >react/component_react.txt</span><br/>  
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >react/CourseDataService.js</span><br/>  
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >react/javabackend.txt</span><br/>  
     <textarea id="react" onkeyup="setCookie(this)" ></textarea>
 </div>
 
 
 <div class='hover'>
     :::JAVA CORE:::<br/>
-    <span onclick='forward(this)'>javacore/collections.txt</span><br/>  
-    <span onclick='forward(this)'>javacore/commands.txt</span><br/>  
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >javacore/collections.txt</span><br/>  
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >javacore/commands.txt</span><br/>  
     <textarea id="javacore" onkeyup="setCookie(this)" ></textarea>
 </div>
 <div class='hover'>
                :REST API SAMPLE PROJECT:<br/>
 
 
-<span onclick='forward(this)'>restapi_example/SpringBoot2RestServiceApplication.java</span><br/>
-<span onclick='forward(this)'>restapi_example/SpringBoot2RestServiceApplicationTests.java</span><br/>
-<span onclick='forward(this)'>restapi_example/Student.java</span><br/>
-<span onclick='forward(this)'>restapi_example/StudentNotFoundException.java</span><br/>
-<span onclick='forward(this)'>restapi_example/StudentRepository.java</span><br/>
-<span onclick='forward(this)'>restapi_example/StudentResource.java</span><br/>
+<span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/SpringBoot2RestServiceApplication.java</span><br/>
+<span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/SpringBoot2RestServiceApplicationTests.java</span><br/>
+<span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/Student.java</span><br/>
+<span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/StudentNotFoundException.java</span><br/>
+<span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/StudentRepository.java</span><br/>
+<span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/StudentResource.java</span><br/>
 <textarea id="restapi" onkeyup="setCookie(this)" ></textarea>
 </div>
 <div class='hover'>
     ::: spring boot -top packages :::<br/>
     springboot-giant: 
 
-  <span onclick='forward(this)'>springboot/in28minutes_giant_parsed.txt</span><br/>
+  <span onclick='forward(this)' onmouseover='getCharLength(this)' >springboot/in28minutes_giant_parsed.txt</span><br/>
     restAPI:
-    <span onclick='forward(this)'>restapi_example/restexample.txt</span><br/>
+    <span onclick='forward(this)' onmouseover='getCharLength(this)' >restapi_example/restexample.txt</span><br/>
     
 
     
     springcore: ?<br/>
     spring web mvc: giant<br/>
-    thymeleaf: <span onclick='forward(this)'>springboot/thymeleaf.txt</span><br/>
+    thymeleaf: <span onclick='forward(this)' onmouseover='getCharLength(this)' >springboot/thymeleaf.txt</span><br/>
     spring data: giant<br/>
     spring hibernate: ginat<br/>
     spring security: giant<br/>
     spring aop: giant<br/>
 
-<textarea id="springboot" onkeyup="setCookie(this)" ></textarea>
+<textarea id="springboot" onkeyup="setCookie(this)"  onmouseover='getCharLength(this)' ></textarea>
 
 </div>
 
@@ -265,7 +280,7 @@ function getCookies() {
     theory: spring framework vs spring boot.<br/>
     theory java.<br/>
     spring framekwork 5 & spring boot 2 <- what is this?
-    <textarea id="concepts" onkeyup="setCookie(this)" ></textarea>
+    <textarea id="concepts" onkeyup="setCookie(this)"  onmouseover='getCharLength(this)' ></textarea>
 </div>
 
 
