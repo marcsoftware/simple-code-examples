@@ -254,7 +254,7 @@ FROM teacher RIGHT JOIN dept
           ON (teacher.dept=dept.id)
 --
 SELECT name,
-COALESCE(mobile, '07986 444 2266')
+COALESCE(mobile, '1234 123 1234')
 FROM teacher
 --
 SELECT COALESCE(teacher.name, 'NONE'), COALESCE(dept.name, 'None')
@@ -289,14 +289,14 @@ FROM stops
 WHERE company = 'LRT' AND num=4
 --
 SELECT company, num, COUNT(*) AS visits
-FROM route WHERE stop=149 OR stop=53
+FROM route WHERE stop=123 OR stop=45
 GROUP BY company, num
 HAVING visits=2
 --
 SELECT a.company, a.num, a.stop, b.stop
 FROM route a JOIN route b ON
   (a.company=b.company AND a.num=b.num)
-WHERE a.stop=53 AND b.stop=149
+WHERE a.stop=12 AND b.stop=345
 --
 SELECT a.company, a.num, stopa.name, stopb.name
 FROM route a JOIN route b ON
