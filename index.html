@@ -160,6 +160,7 @@ function getCookies() {
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+var global_length=0;
  async  function doGet(url) {
 
      url = "study_material/"+url;
@@ -184,6 +185,7 @@ function getCookies() {
         //alert(data.length);
 
         document.querySelector("#hoverlength").innerHTML=data.length;
+        global_length=data.length;
         return data.length;
   
         // handle data
@@ -196,10 +198,10 @@ function getCookies() {
 //-----------------------------------------------------------------------------
 function reportProgress(name){
     document.getElementById('report').innerHTML="";
-    var modes="easy,braintyper".split(",");
+    var modes="easy,braintyper,easydone,braintyperdone".split(",");
     for(var i=0;i<modes.length;i++){
         var num = getCookie(name,modes[i]);
-        document.getElementById('report').innerHTML+=name+";"+modes[i]+":"+num+"<br/>";
+        document.getElementById('report').innerHTML+=`${modes[i]} ${num} ${((num/global_length)*100).toFixed(2)}%<br/>`;
     }
 }
 
