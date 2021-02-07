@@ -37,10 +37,13 @@
         border-color:white;
     }
 
-    #hover{
+    #popup{
         position: fixed;
-top: 40px; left: 40px;
+        top: 60px; left: 40px;
     }
+
+   
+
 </style>
 <body>
 
@@ -153,18 +156,88 @@ function getCookies() {
 }
 
 
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+ async  function doGet(url) {
+
+     url = "study_material/"+url;
+    if(url.includes(".")){
+
+    }else{
+        url+='.txt';
+    }
+
+
+   url=url.replace(/%2F/g,"/");
+   
+      let response = await fetch(url);
+
+   
+   
+
+    if (response.status === 200) {
+        let data = await response.text();
+         //file = data.split("\n"); 
+         //file.shift();/ / shift() deletes the empty element.
+        //alert(data.length);
+
+        document.querySelector("#hoverlength").innerHTML=data.length;
+        return data.length;
+  
+        // handle data
+    }
+}
+
+
+//-----------------------------------------------------------------------------
+// reads localstorate to get user progress
+//-----------------------------------------------------------------------------
+function reportProgress(name){
+        var num = getCookie(name);
+        document.getElementById('report').innerHTML=name+":"+num;
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function getCookie(name) {
+    name=name.replace(/\//g,"%2F");
+  var p = localStorage.getItem(`${name}easy`); 
+  
+  if( p==='NaN' || !p){
+    
+    p=0;
+  }
+  return p; 
+  //localStorage.setItem(`${book_name}lineNumber`,pageNumber*PAGE_SIZE );
+
+}
+
+
 //-----------------------------------------------------------------------------
 // return the legnth of charecter in the file.
 //-----------------------------------------------------------------------------
-
 function getCharLength(handle){
     var el = document.querySelector("#hover");
-    el.innerHTML=handle.innerHTML;
+    var name = handle.innerHTML;
+    el.innerHTML=name;
+    doGet(name);
+    reportProgress(name);
 
 }
+
 </script>
 
-<span id='hover'></span>
+<!--  the hover event uses these elements -->
+<span id='popup'>
+        <span id='hover'></span><br/>
+        <span id='hoverlength'></span><br/>
+        <span id='report'></span>
+</span>
+
 <div class='blank'>
     CODE
 </div>
@@ -227,7 +300,7 @@ function getCharLength(handle){
 
 
 <div class='hover'>
-    :::react:::<br/>
+    :::react & java project:::<br/>
     <span onclick='forward(this)' onmouseover='getCharLength(this)' >react/component_react.txt</span><br/>  
     <span onclick='forward(this)' onmouseover='getCharLength(this)' >react/CourseDataService.js</span><br/>  
     <span onclick='forward(this)' onmouseover='getCharLength(this)' >react/javabackend.txt</span><br/>  
@@ -277,7 +350,7 @@ function getCharLength(handle){
 </div>
 
 <div class='hover'>
-    :::CONCEPTS:::
+    :::CONCEPTS:::<br/>
     theory: spring framework vs spring boot.<br/>
     theory java.<br/>
     spring framekwork 5 & spring boot 2 <- what is this?
