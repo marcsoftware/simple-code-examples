@@ -28,7 +28,7 @@
     span{
         cursor: pointer;
         color:blue;
-     text-decoration:underline;
+        text-decoration:underline;
     }   
 
     textarea{
@@ -42,7 +42,10 @@
         top: 60px; left: 40px;
     }
 
-   
+   #hover,#hoverlength,#report,#report{
+    color:black;
+    text-decoration: none;
+   }
 
 </style>
 <body>
@@ -201,8 +204,19 @@ function reportProgress(name){
     var modes="easy,braintyper,easydone,braintyperdone".split(",");
     for(var i=0;i<modes.length;i++){
         var num = getCookie(name,modes[i]);
-        document.getElementById('report').innerHTML+=`${modes[i]} ${num} ${((num/global_length)*100).toFixed(2)}%<br/>`;
+        document.getElementById('report').innerHTML+=`<tr><td>${modes[i]}</td> <td>${num}</td> <td>${calculateProgress(num,global_length,modes[i])}%</td></tr>`;
     }
+}
+
+
+//-----------------------------------------------------------------------------
+// calculate percentcomplete 
+//-----------------------------------------------------------------------------
+function calculateProgress(num,total,mode){
+    if(mode==='braintyper'){ //braintyper cookie is saved to remaining charecters instead of done charecters.
+        num=(total-num);
+    }
+    return ((num/total)*100).toFixed(2);
 }
 
 
@@ -241,7 +255,7 @@ function getCharLength(handle){
 <span id='popup'>
         <span id='hover'></span><br/>
         <span id='hoverlength'></span><br/>
-        <span id='report'></span>
+        <table id='report'></table>
 </span>
 
 <div class='blank'>
