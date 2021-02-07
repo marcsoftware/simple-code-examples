@@ -148,6 +148,8 @@ max_chars=max;
     if(page>max){
       page=max;
       setCookie(page);
+
+      updateDoneCookie();
     }
     
 
@@ -304,6 +306,25 @@ function getCookie(cname) {
 function setCookie(x) {
 
   localStorage.setItem(`${file_name}easy`,x);
+
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function updateDoneCookie(x) {
+
+   var p = localStorage.getItem(`${file_name}easydone`); 
+  
+  if( p==='NaN' || !p){
+    
+    p=0;
+  }
+  
+  p++;
+  
+  localStorage.setItem(`${file_name}easydone`,p);
 
 }
 

@@ -84,6 +84,25 @@ function playAudio(word){
 }
 
 //-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+function updateDoneCookie(x) {
+
+   var p = localStorage.getItem(`${file_name}braintyperdone`); 
+  
+  if( p==='NaN' || !p){
+    
+    p=0;
+  }
+  
+  p++;
+  
+  localStorage.setItem(`${file_name}braintyperdone`,p);
+
+}
+
+
+//-----------------------------------------------------------------------------
 // draw the question
 //-----------------------------------------------------------------------------
 var page;
@@ -236,6 +255,7 @@ drawContext();
 if(page>=file.length-1){
   page=0;
   document.getElementById("feedback").innerHTML='---------YOU WIN-------------';
+  updateDoneCookie();
 
 }
     setCookie();
