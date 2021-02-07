@@ -204,7 +204,7 @@ function reportProgress(name){
     var modes="easy,braintyper,easydone,braintyperdone".split(",");
     for(var i=0;i<modes.length;i++){
         var num = getCookie(name,modes[i]);
-        document.getElementById('report').innerHTML+=`<tr><td>${modes[i]}</td> <td>${num}</td> <td>${calculateProgress(num,global_length,modes[i])}%</td></tr>`;
+        document.getElementById('report').innerHTML+=`<tr><td>${modes[i]}</td> <td>${num}</td> <td>${calculateProgress(num,global_length,modes[i])}</td></tr>`;
     }
 }
 
@@ -216,7 +216,11 @@ function calculateProgress(num,total,mode){
     if(mode==='braintyper'){ //braintyper cookie is saved to remaining charecters instead of done charecters.
         num=(total-num);
     }
-    return ((num/total)*100).toFixed(2);
+
+    if(mode.includes("done")){
+        return num;
+    }
+    return ((num/total)*100).toFixed(2)+"%";
 }
 
 
