@@ -195,17 +195,21 @@ function getCookies() {
 // reads localstorate to get user progress
 //-----------------------------------------------------------------------------
 function reportProgress(name){
-        var num = getCookie(name);
-        document.getElementById('report').innerHTML=name+":"+num;
+    document.getElementById('report').innerHTML="";
+    var modes="easy,braintyper".split(",");
+    for(var i=0;i<modes.length;i++){
+        var num = getCookie(name,modes[i]);
+        document.getElementById('report').innerHTML+=name+";"+modes[i]+":"+num+"<br/>";
+    }
 }
 
 
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
-function getCookie(name) {
+function getCookie(name,mode) {
     name=name.replace(/\//g,"%2F");
-  var p = localStorage.getItem(`${name}easy`); 
+  var p = localStorage.getItem(name+mode); 
   
   if( p==='NaN' || !p){
     
