@@ -241,10 +241,11 @@ function checkInput(event,input){
         middle=middle[0];
 
       }
+
       if(middle.toLowerCase()===input.toLowerCase() || middle.length===0 || middle.trim().length===0 ){
           document.getElementById('input').value='';
 
-      }else if(middle.includes('↲') && input.match(/\s/g)!==null){
+      }else if(middle.includes('↲') && input.match(/\s/g)!==null || middle.includes("⇒")){
 
       }else{
         return;
@@ -270,7 +271,7 @@ function moveLetter(){
     document.getElementById('left').innerHTML+=middle;  
 
     var right = document.getElementById('right').innerHTML.replace(/&lt;/g,"<").replace(/>/g,"&gt;");
-    console.log( typeof right[0]);
+    console.log( typeof right[0]); //
     if(typeof right[0] === 'undefined' && flag){
       
       updateDoneCookie();
@@ -293,7 +294,7 @@ function moveLetter(){
     document.getElementById("page").scrollIntoView(false);
     flag=true;
 
-    if(target.match(/\s/g).length>0){
+    if(target.match(/\s/g)){
       moveLetter(); //skip all whitespace automatically TODO : this is not working.
     }
 }
