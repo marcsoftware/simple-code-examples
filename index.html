@@ -218,7 +218,15 @@ function calculateProgress(num,total,mode){
     }
 
     if(mode.includes("done")){
-        return num;
+        var list=['','🌙','🪐','🌟'];
+        if( num>=0 && num <list.length){
+            
+            
+            return list[num];
+        
+        }else{
+            return '🌟';
+        }
     }
     return ((num/total)*100).toFixed(2)+"%";
 }
@@ -303,8 +311,9 @@ function getCharLength(handle){
     <span onclick='forward(this)' onmouseover='getCharLength(this)' >javacommands</span><br/>   
     jenkins: ?<br/>
     docker: ?<br/>
-    linux: <span onclick='forward(this)'>linux</span><br/>
-<textarea id="easy" onkeyup="setCookie(this)" ></textarea>
+    linux: <span onclick='forward(this)' onmouseover='getCharLength(this)' >linux</span><br/>
+
+    <textarea id="easy" onkeyup="setCookie(this)" ></textarea>
 </div>
 
 
