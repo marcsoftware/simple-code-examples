@@ -158,8 +158,10 @@ function reportProgress(name){
 // calculate percentcomplete 
 //-----------------------------------------------------------------------------
 function calculateProgress(num,total,mode){
-    if(mode==='braintyper'){ //braintyper cookie is saved to remaining charecters instead of done charecters.
-        num=(total-num);
+  num=parseInt(num);
+  total=parseInt(total);
+    if(mode==='easy'){ //braintyper cookie is saved to remaining charecters instead of done charecters.
+        num=(num-total);
     }
 
     var list=" ,🌑,🌒,🌓,🌔,🌕".split(",");
@@ -174,7 +176,8 @@ function calculateProgress(num,total,mode){
             return list[list.length-1];
         }
     }
-    return ((num/total)*100).toFixed(2)+"%";
+    return (((num/total)).toFixed(2))+"%";
+    //return (num/total);
 }
 
 
