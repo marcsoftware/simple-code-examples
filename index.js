@@ -149,7 +149,7 @@ function reportProgress(name){
     var modes="easy,braintyper,easydone,braintyperdone".split(",");
     for(var i=0;i<modes.length;i++){
         var num = getCookie(name,modes[i]);
-        document.getElementById('report').innerHTML+=`<tr><td>${modes[i]}</td> <td>${num}</td> <td>${calculateProgress(num,global_length,modes[i])}</td></tr>`;
+        document.getElementById('report').innerHTML+=`<tr><td>${modes[i]}</td> <td>${num}</td> <td class='percent'>${calculateProgress(num,global_length,modes[i])}</td></tr>`;
     }
 }
 
