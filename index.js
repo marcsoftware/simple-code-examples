@@ -176,7 +176,7 @@ function calculateProgress(num,total,mode){
             return list[list.length-1];
         }
     }
-    return (((num/total)).toFixed(2))*100+"%";
+    return ((((num/total))*100).toFixed(2))+"%";
     //return (num/total);
 }
 
