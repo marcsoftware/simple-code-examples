@@ -261,6 +261,7 @@ function checkInput(event,input){
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+var flag =false;
 function moveLetter(){
     var middle = document.getElementById('middle').innerHTML;
     if(middle.includes('↲')){
@@ -269,9 +270,17 @@ function moveLetter(){
     document.getElementById('left').innerHTML+=middle;  
 
     var right = document.getElementById('right').innerHTML.replace(/&lt;/g,"<").replace(/>/g,"&gt;");
+    console.log( typeof right[0]);
+    if(typeof right[0] === 'undefined' && flag){
+      
+      updateDoneCookie();
+      location.reload();
+      return;
 
+    }
     // if right[0] is line break convert to space.
     var target = right[0];
+
     if(right[0].match(/\n/g) !==null){   
       
       target="↲\n";
@@ -282,7 +291,7 @@ function moveLetter(){
     document.getElementById('right').innerHTML=right.slice(1).replace(/</g,"&lt;").replace(/>/g,"&gt;");
     document.getElementById("page").innerHTML=(right.length--)+"/"+max_chars;
     document.getElementById("page").scrollIntoView(false);
-
+    flag=true;
 }
 
 //-----------------------------------------------------------------------------
