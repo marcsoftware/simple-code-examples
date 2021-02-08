@@ -292,6 +292,10 @@ function moveLetter(){
     document.getElementById("page").innerHTML=(right.length--)+"/"+max_chars;
     document.getElementById("page").scrollIntoView(false);
     flag=true;
+
+    if(target.match(/\s/g).length>0){
+      moveLetter(); //skip all whitespace automatically TODO : this is not working.
+    }
 }
 
 //-----------------------------------------------------------------------------
