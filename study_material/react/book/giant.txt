@@ -1047,3 +1047,338 @@ const App = () => {
    )
 }
 export default App
+
+-- picker
+import React from 'react'
+import PickerExample from './PickerExample.js'
+
+const App = () => {
+   return (
+      <PickerExample />
+   )
+}
+export default App
+
+--
+import React, { Component } from 'react';
+import { View, Text, Picker, StyleSheet } from 'react-native'
+
+class PickerExample extends Component {
+   state = {user: ''}
+   updateUser = (user) => {
+      this.setState({ user: user })
+   }
+   render() {
+      return (
+         <View>
+            <Picker selectedValue = {this.state.user} onValueChange = {this.updateUser}>
+               <Picker.Item label = "Steve" value = "steve" />
+               <Picker.Item label = "Ellen" value = "ellen" />
+               <Picker.Item label = "Maria" value = "maria" />
+            </Picker>
+            <Text style = {styles.text}>{this.state.user}</Text>
+         </View>
+      )
+   }
+}
+export default PickerExample
+
+const styles = StyleSheet.create({
+   text: {
+      fontSize: 30,
+      alignSelf: 'center',
+      color: 'red'
+   }
+})
+--status bar
+import React, { Component } from 'react';
+import { StatusBar } from 'react-native'
+
+const App = () => {
+   return (
+      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#00BCD4" translucent = {true}/>
+   )
+}
+export default App
+--switch
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import SwitchExample from './switch_example.js'
+
+export default class HomeContainer extends Component {
+   constructor() {
+      super();
+      this.state = {
+         switch1Value: false,
+      }
+   }
+   toggleSwitch1 = (value) => {
+      this.setState({switch1Value: value})
+      console.log('Switch 1 is: ' + value)
+   }
+   render() {
+      return (
+         <View>
+            <SwitchExample
+            toggleSwitch1 = {this.toggleSwitch1}
+            switch1Value = {this.state.switch1Value}/>
+         </View>
+      );
+   }
+}
+--
+import React, { Component } from 'react'
+import { View, Switch, StyleSheet }
+
+from 'react-native'
+
+export default SwitchExample = (props) => {
+   return (
+      <View style = {styles.container}>
+         <Switch
+         onValueChange = {props.toggleSwitch1}
+         value = {props.switch1Value}/>
+      </View>
+   )
+}
+const styles = StyleSheet.create ({
+   container: {
+      flex: 1,
+      alignItems: 'center',
+      marginTop: 100
+   }
+})
+-- text
+import React, { Component } from 'react'
+import TextExample from './text_example.js'
+
+const App = () => {
+   return (
+      <TextExample/>
+   )
+}
+export default App
+--
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native'
+
+const TextExample = () => {
+   return (
+      <View style = {styles.container}>
+         <Text style = {styles.text}>
+            <Text style = {styles.capitalLetter}>
+               L
+            </Text>
+            
+            <Text>
+               orem ipsum dolor sit amet, sed do eiusmod.
+            </Text>
+            
+            <Text>
+               Ut enim ad <Text style = {styles.wordBold}>minim </Text> veniam,
+               quis aliquip ex ea commodo consequat.
+            </Text>
+            
+            <Text style = {styles.italicText}>
+               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+            </Text>
+            
+            <Text style = {styles.textShadow}>
+               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+               deserunt mollit anim id est laborum.
+            </Text>
+         </Text>
+      
+      </View>
+   )
+}
+export default TextExample
+
+const styles = StyleSheet.create ({
+   container: {
+      alignItems: 'center',
+      marginTop: 100,
+      padding: 20
+   },
+   text: {
+      color: '#41cdf4',
+   },
+   capitalLetter: {
+      color: 'red',
+      fontSize: 20
+   },
+   wordBold: {
+      fontWeight: 'bold',
+      color: 'black'
+   },
+   italicText: {
+      color: '#37859b',
+      fontStyle: 'italic'
+   },
+   textShadow: {
+      textShadowColor: 'red',
+      textShadowOffset: { width: 2, height: 2 },
+      textShadowRadius : 5
+   }
+})
+--alert
+import React from 'react'
+import AlertExample from './alert_example.js'
+
+const App = () => {
+   return (
+      <AlertExample />
+   )
+}
+export default App
+--
+import React from 'react'
+import { Alert, Text, TouchableOpacity, StyleSheet } from 'react-native'
+
+const AlertExample = () => {
+   const showAlert = () =>{
+      Alert.alert(
+         'You need to...'
+      )
+   }
+   return (
+      <TouchableOpacity onPress = {showAlert} style = {styles.button}>
+         <Text>Alert</Text>
+      </TouchableOpacity>
+   )
+}
+export default AlertExample
+
+const styles = StyleSheet.create ({
+   button: {
+      backgroundColor: '#4ba37b',
+      width: 100,
+      borderRadius: 50,
+      alignItems: 'center',
+      marginTop: 100
+   }
+})
+--geolocation
+import React from 'react'
+import GeolocationExample from './geolocation_example.js'
+
+const App = () => {
+   return (
+      <GeolocationExample />
+   )
+}
+export default App
+--
+import React, { Component } from 'react'
+import { View, Text, Switch, StyleSheet} from 'react-native'
+
+class SwichExample extends Component {
+   state = {
+      initialPosition: 'unknown',
+      lastPosition: 'unknown',
+   }
+   watchID: ?number = null;
+   componentDidMount = () => {
+      navigator.geolocation.getCurrentPosition(
+         (position) => {
+            const initialPosition = JSON.stringify(position);
+            this.setState({ initialPosition });
+         },
+         (error) => alert(error.message),
+         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+      this.watchID = navigator.geolocation.watchPosition((position) => {
+         const lastPosition = JSON.stringify(position);
+         this.setState({ lastPosition });
+      });
+   }
+   componentWillUnmount = () => {
+      navigator.geolocation.clearWatch(this.watchID);
+   }
+   render() {
+      return (
+         <View style = {styles.container}>
+            <Text style = {styles.boldText}>
+               Initial position:
+            </Text>
+            
+            <Text>
+               {this.state.initialPosition}
+            </Text>
+            
+            <Text style = {styles.boldText}>
+               Current position:
+            </Text>
+            
+            <Text>
+               {this.state.lastPosition}
+            </Text>
+         </View>
+      )
+   }
+}
+export default SwichExample
+
+const styles = StyleSheet.create ({
+   container: {
+      flex: 1,
+      alignItems: 'center',
+      marginTop: 50
+   },
+   boldText: {
+      fontSize: 30,
+      color: 'red',
+   }
+})
+--async storage
+import React from 'react'
+import AsyncStorageExample from './async_storage_example.js'
+
+const App = () => {
+   return (
+      <AsyncStorageExample />
+   )
+}
+export default App
+--
+import React, { Component } from 'react'
+import { StatusBar } from 'react-native'
+import { AsyncStorage, Text, View, TextInput, StyleSheet } from 'react-native'
+
+class AsyncStorageExample extends Component {
+   state = {
+      'name': ''
+   }
+   componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
+   
+   setName = (value) => {
+      AsyncStorage.setItem('name', value);
+      this.setState({ 'name': value });
+   }
+   render() {
+      return (
+         <View style = {styles.container}>
+            <TextInput style = {styles.textInput} autoCapitalize = 'none'
+            onChangeText = {this.setName}/>
+            <Text>
+               {this.state.name}
+            </Text>
+         </View>
+      )
+   }
+}
+export default AsyncStorageExample
+
+const styles = StyleSheet.create ({
+   container: {
+      flex: 1,
+      alignItems: 'center',
+      marginTop: 50
+   },
+   textInput: {
+      margin: 5,
+      height: 100,
+      borderWidth: 1,
+      backgroundColor: '#7685ed'
+   }
+})
