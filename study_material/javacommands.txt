@@ -1,13 +1,10 @@
 javac Hello.java
 java Hello
+javac -d . src/Atomic1.java
+java -classpath . src.Atomic1
 
-marc@LAPTOP-R9CGK8JT MINGW64 ~/Desktop/sandbox
 
-$ javac -d . src/Atomic1.java
-$ java -classpath . src.Atomic1
-Increment: Expected=1000; Is=1000
-Accumulate: 499500
-Update: 2000
+
 
 
 

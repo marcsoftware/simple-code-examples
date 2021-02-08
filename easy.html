@@ -274,7 +274,7 @@ function moveLetter(){
     if(typeof right[0] === 'undefined' && flag){
       
       updateDoneCookie();
-      location.reload();
+      
       return;
 
     }
@@ -334,6 +334,9 @@ function updateDoneCookie(x) {
   p++;
   
   localStorage.setItem(`${file_name}easydone`,p);
+  flag=false;
+  alert('you win');
+  window.reload();
 
 }
 
