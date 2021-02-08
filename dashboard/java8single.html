@@ -34,36 +34,11 @@
 </style>
 <body>
 
+<script src='../index.js'></script>
 
 
 
 
-<script>
-//----------------------------------------------------
-// forward to user to another page
-//----------------------------------------------------
-function forward(handle){
-    var filename =handle.innerHTML.trim();
-    var mode = getRadioSelection();
-    window.location.href = `file:///C:/Users/marc/Desktop/simple-code-examples/${mode}.html?name=${filename}`
-}
-
-
-
-//----------------------------------------------------
-// get value of radio button
-//----------------------------------------------------
-
-function getRadioSelection() { 
-    var ele = document.getElementsByName('mode'); 
-      
-    for(i = 0; i < ele.length; i++) { 
-        if(ele[i].checked) 
-            return ele[i].value; 
-    } 
-} 
-
-</script>
 
 
 <div class='blank'>
