@@ -161,7 +161,7 @@ function calculateProgress(num,total,mode){
   num=parseInt(num);
   total=parseInt(total);
     if(mode==='easy'){ //braintyper cookie is saved to remaining charecters instead of done charecters.
-        num=(num-total);
+        num=(total-num);
     }
 
     var list=" ,🌑,🌒,🌓,🌔,🌕".split(",");
@@ -176,7 +176,7 @@ function calculateProgress(num,total,mode){
             return list[list.length-1];
         }
     }
-    return (((num/total)).toFixed(2))+"%";
+    return (((num/total)).toFixed(2))*100+"%";
     //return (num/total);
 }
 

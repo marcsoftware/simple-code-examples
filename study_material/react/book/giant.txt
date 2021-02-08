@@ -523,7 +523,7 @@ import React, { Component } from 'react'
 import { View, Image } from 'react-native'
 
 const ImagesExample = () => (
-   <Image source = {{uri:'https://pbs.twimg.com/profile_images/486929358120964097/gNLINY67_400x400.png'}}
+   <Image source = {{uri:'https://pbs.twimg.com/profile_images/123/image10x10.png'}}
    style = {{ width: 200, height: 200 }}
    />
 )
@@ -850,7 +850,7 @@ const WebViewExample = () => {
       <View style = {styles.container}>
          <WebView
          source = {{ uri:
-         'https://www.google.com/?gws_rd=cr,ssl&ei=SICcV9_EFqqk6ASA3ZaABA#q=tutorialspoint' }}
+         'https://www.google.com/?q=tutorialspoint' }}
          />
       </View>
    )
@@ -1160,21 +1160,21 @@ const TextExample = () => {
             </Text>
             
             <Text>
-               orem ipsum dolor sit amet, sed do eiusmod.
+               oser
             </Text>
             
             <Text>
-               Ut enim ad <Text style = {styles.wordBold}>minim </Text> veniam,
-               quis aliquip ex ea commodo consequat.
+               some <Text style = {styles.wordBold}>more </Text> text,
+
             </Text>
             
             <Text style = {styles.italicText}>
-               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+               moretext
             </Text>
             
             <Text style = {styles.textShadow}>
-               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-               deserunt mollit anim id est laborum.
+            moretext
+		moretext
             </Text>
          </Text>
       
