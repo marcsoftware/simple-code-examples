@@ -10,3 +10,37 @@ rmdir */  # delte empty directories only
 find foo/ -iname '*.java' -exec cp \{\} dest/ \;
 
 
+cat
+more
+less
+head -2 somefile
+tail -2 somefile
+mkdir somename
+cp sourcefolder destfolder
+mv sourcefolder destfolder
+rm somefile
+touch filename
+grep marc somefile
+grep -i marc somefile
+grep -E ^Er somefile
+sort somefile
+sort -r somefile
+sort -R somefile
+wc somefile
+wc -l somefile
+wc -w somefile
+wc -m somefile
+
+cut -c 2-4 somefile
+du
+pwd
+man
+rmdir
+ln file1 file2 
+ln -s file1 file2
+
+chown
+chgrp
+chmod
+
+
