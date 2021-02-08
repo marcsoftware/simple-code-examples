@@ -217,15 +217,16 @@ function calculateProgress(num,total,mode){
         num=(total-num);
     }
 
+    var list=" ,🌑,🌒,🌓,🌔,🌕".split(",");
     if(mode.includes("done")){
-        var list=['','🌙','🪐','🌟'];
+        
         if( num>=0 && num <list.length){
             
             
             return list[num];
         
         }else{
-            return '🌟';
+            return list[list.length-1];
         }
     }
     return ((num/total)*100).toFixed(2)+"%";
