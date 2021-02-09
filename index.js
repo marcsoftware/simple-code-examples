@@ -8,6 +8,7 @@ window.onload=init;
 //
 //---------------------------------------------------
 function init(){
+
         getCookies();
 }
 
@@ -145,6 +146,7 @@ var global_length=0;
 // reads localstorate to get user progress
 //-----------------------------------------------------------------------------
 function reportProgress(name){
+
     document.getElementById('report').innerHTML="";
     var modes="easy,braintyper,easydone,braintyperdone".split(",");
     for(var i=0;i<modes.length;i++){
@@ -202,6 +204,7 @@ function getCookie(name,mode) {
 // return the legnth of charecter in the file.
 //-----------------------------------------------------------------------------
 function getCharLength(handle){
+  console.log('charlength(): '+name);
     var el = document.querySelector("#hover");
     var name = handle.innerHTML;
     el.innerHTML=name;
