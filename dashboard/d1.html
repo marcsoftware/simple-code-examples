@@ -2,42 +2,18 @@
 <html>
 <title>simple flashcards</title>
 <meta charset="UTF-8">
-<style>
-    div{
-        margin: auto;
-        text-align: center;
-  width: 30%;
-  border: 2px solid #7e8694;
-  padding: 10px;
-  margin-bottom: 10px;
-    }
-
-    .blank{
-        border-color: white;
-    }
-
-
-    a{
-        padding:10px;
-    }
-
-    .hover:hover{
-        border-color: #5b6370;
-    }
-
-    span{
-        cursor: pointer;
-        color:blue;
-     text-decoration:underline;
-    }   
-
-</style>
+<link rel="stylesheet" href="../index.css">
 <body>
 
 <script src='../index.js'></script>
 
 
-
+<!--  the hover event uses these elements -->
+<span id='popup'>
+        <span id='hover'></span><br/>
+        <span id='hoverlength'></span><br/>
+        <table id='report'></table>
+</span>
 
 
 
@@ -69,7 +45,7 @@
     
     
     
-    <span onclick='forward(this)'>java8/Atomic1.java</span><br/>    
+    <span onclick='forward(this)' nmouseover='getCharLength(this)' >java8/Atomic1.java</span><br/>    
     <span onclick='forward(this)'>java8/ConcurrentUtils.java</span><br/>
     <span onclick='forward(this)'>java8/CompletableFuture1.java</span><br/>
     <span onclick='forward(this)'>java8/ConcurrentHashMap1.java</span><br/>
