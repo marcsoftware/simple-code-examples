@@ -47,6 +47,7 @@
       padding-right: 0px;
       margin-right: :0px;
       animation: blinker 1s linear infinite;
+      min-width: 3px;
 
     }
 
@@ -150,7 +151,7 @@ max_chars=max;
       page=max;
       setCookie(page);
 
-      updateDoneCookie();
+      //updateDoneCookie();
     }
     
 
@@ -228,6 +229,8 @@ function compare(left,right){
 //-----------------------------------------------------------------------------
 function checkInput(event,input){
         
+        var valid_chars=`[-=\[\]';\./~!@#$%^&*()_+}{:"?\>\<]`;
+        let valid_regex = new RegExp(valid_chars);
         
         
        var unicode=  event.keyCode;
@@ -238,6 +241,9 @@ function checkInput(event,input){
        //≺  ≻
       var middle = document.getElementById('middle').innerHTML.replace(/≻/g,">").replace(/≺/g,"<").replace(/ℇ/g,"&");
       var newlineflag=false;
+
+
+
       if(middle.length !== 0){
         middle=middle[0];
 
@@ -246,7 +252,7 @@ function checkInput(event,input){
       if(middle.toLowerCase()===input.toLowerCase() || middle.length===0 || middle.trim().length===0 ){
           document.getElementById('input').value='';
 
-      }else if(middle.includes('↲') && input.match(/\s/g)!==null || middle.includes("⇒")){
+      }else if(middle.includes('↲') && input.match(/\s/g)!==null || middle.includes("⇒") ||  middle.match(/[-=\[\]';\./~!@#$%^&*()_+}{:"?\>\<]/g) === null){
 
       }else{
         return;
