@@ -37,6 +37,8 @@
         top: 60px; left: 40px;
     }
 
+
+
    #hover,#hoverlength,#report,#report{
     color:black;
     text-decoration: none;
@@ -44,4 +46,8 @@
 
    .percent{
     color:blue;
+   }
+
+   .buttons{
+    width:100px;
    }

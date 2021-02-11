@@ -252,7 +252,8 @@ function checkInput(event,input){
       if(middle.toLowerCase()===input.toLowerCase() || middle.length===0 || middle.trim().length===0 ){
           document.getElementById('input').value='';
 
-      }else if(middle.includes('↲') && input.match(/\s/g)!==null || middle.includes("⇒") ||  middle.match(/[-=\[\]';\./~!@#$%^&*()_+}{:"?\>\<]/g) === null){
+//||  middle.match(/[-=\[\]';\./~!@#$%^&*()_+}{:"?\>\<]/g) === null
+      }else if(middle.includes('↲') && input.match(/\s/g)!==null || middle.includes("⇒") ){
 
       }else{
         return;
