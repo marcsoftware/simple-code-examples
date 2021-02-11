@@ -144,7 +144,7 @@ function parseFile(x){
     var max = x.length;
 max_chars=max;
 
-    document.getElementById("page").innerHTML=(page+1)+"/"+max_chars; //
+    document.getElementById("page").innerHTML=(max_chars-(page+1))+"/"+max_chars; //
 
     
     if(page>max){
@@ -298,7 +298,7 @@ function moveLetter(){
 
     
     document.getElementById('right').innerHTML=right.slice(1).replace(/</g,"&lt;").replace(/>/g,"&gt;");
-    document.getElementById("page").innerHTML=(right.length--)+"/"+max_chars;
+    document.getElementById("page").innerHTML=(max_chars-(right.length--))+"/"+max_chars;
     document.getElementById("page").scrollIntoView(false);
     flag=true;
 
