@@ -287,6 +287,11 @@ function feedback(input){
      var new_input = input.replace(/\s/g,"").split("");
      var result='';
      
+     if(!new_key.join('').match(/\w/g)){
+        //if contains no word charactess than skip.
+        handleCorrectAns();
+
+     }
     for(var i=0;i<new_key.length;i++){
         if(new_key[i].toLowerCase()===new_input[i] || new_key[i].toUpperCase()===new_input[i]){
           result+=new_key[i];
