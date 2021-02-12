@@ -276,7 +276,7 @@ function drawContext(){
     var after =  file.slice(page+1).join("").replace(/</g,'&lt;');
     document.getElementById('context').innerHTML=`${before}<br/><span id='feedback'></span><br/><br/><span id='ans_key'></span><br/>${after}`;
     alert(max_chars-file[page].length);
-    document.getElementById('countdown').innerHTML=(max_chars-file[page].length)+`/ ${max_chars}`; // TODO this is wrong on page laod HERE 
+    document.getElementById('countdown').innerHTML=(file[page].length)+`/ ${max_chars}`; // TODO this is wrong on page laod HERE 
 
 }
 
