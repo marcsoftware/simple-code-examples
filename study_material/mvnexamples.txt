@@ -16,7 +16,7 @@ mvn -o package
 mvn -q package
 mvn -T 4 clean install
 mvn COMMAND     --debug 
-
+ java -jar backend/target/backend-0.0.1-SNAPSHOT.jar
 pom.xml
 <dependencies>
 mvnrepository.com
@@ -41,6 +41,3 @@ mvnrepository.com
 </properties>
 
 </project>
-
-
- java -jar backend/target/backend-0.0.1-SNAPSHOT.jar
