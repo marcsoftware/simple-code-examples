@@ -303,6 +303,20 @@ function feedback(input){
           result+="❗️";  //red explamation emoji
         }
     }
+/*
+    //TODO : X. for loop input legnth 
+             X. compare to var spaces. if spaces[i] == " "
+             4.  insert space into result 
+             5. and insertspace into newinput?
+  */
+
+    for(var i=0;i<new_input.length;i++){
+       if(spaces[i]===" "){
+            //
+            //substring()     Extracts the characters from a string, between two specified indices
+       }
+    }
+
     document.getElementById("feedback").innerHTML=result.replace(/</g,"&lt;");
 }
 
