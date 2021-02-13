@@ -309,15 +309,17 @@ function feedback(input){
              4.  insert space into result 
              5. and insertspace into newinput?
   */
-
+  result=result.split("");
+  //alert(result);
     for(var i=0;i<new_input.length;i++){
        if(spaces[i]===" "){
             //
             //substring()     Extracts the characters from a string, between two specified indices
+            result.splice(i, 0, " ");
        }
     }
 
-    document.getElementById("feedback").innerHTML=result.replace(/</g,"&lt;");
+    document.getElementById("feedback").innerHTML=result.join('').replace(/</g,"&lt;");
 }
 
 
