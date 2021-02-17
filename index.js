@@ -86,7 +86,7 @@ function linter(text){
 function getCookies() {
 
   //list all textarea ids here.
-  var list = "easy,concepts,springboot,restapi,javacore,react,java8";
+  var list = "easy,concepts,springboot,restapi,javacore,react,java8,reactnative";
   list = list.split(",");
 
   for(var i=0;i<list.length;i++){

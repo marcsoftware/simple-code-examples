@@ -64,7 +64,7 @@ class Home extends Component {
    state = {
       myState: 'Lorem ipsum paragraph.'
    }
-   updateState = () ⇒ this.setState({ myState: 'The state is updated' })
+   updateState = () -> this.setState({ myState: 'The state is updated' })
    render() {
       return (
          <View>
@@ -523,7 +523,7 @@ import React, { Component } from 'react'
 import { View, Image } from 'react-native'
 
 const ImagesExample = () => (
-   <Image source = {{uri:'https://pbs.twimg.com/profile_images/123/image10x10.png'}}
+   <Image source = {{uri:'https://google.com/image.jpg'}}
    style = {{ width: 200, height: 200 }}
    />
 )
@@ -730,7 +730,9 @@ const styles = StyleSheet.create({
       height: 100
    }
 })
--- investigate this: You can open the developer menu on the IOS simulator by pressing command + D.On Android emulator, you need to press command + M.
+-- investigate this:
+ You can open the developer menu on the IOS simulator by pressing command + D.
+On Android emulator, you need to press command + M.
 
 
 --router

@@ -147,14 +147,14 @@ stringCollection
     .forEach(System.out::println);
 // "aaa1", "aaa2"
 System.out.println(stringCollection);
-// ddd2, aaa2, bbb1, aaa1, bbb3, ccc, bbb2, ddd1
+
 Map#
 stringCollection
     .stream()
     .map(String::toUpperCase)
     .sorted((a, b) -> b.compareTo(a))
     .forEach(System.out::println);
-// "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
+// "DDD2", "DDD1" ...
 //Match#
 boolean anyStartsWithA =
     stringCollection
@@ -185,7 +185,7 @@ Optional<String> reduced =
         .sorted()
         .reduce((s1, s2) -> s1 + "#" + s2);
 reduced.ifPresent(System.out::println);
-// "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
+// "aaa1#aaa2#...
 //Parallel Streams#
 int max = 1000000;
 List<String> values = new ArrayList<>(max);
