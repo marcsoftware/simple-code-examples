@@ -57,7 +57,8 @@ class ListCoursesComponent extends Component {
     }
 }
 
-export default ListCoursesComponentimport React, { Component } from 'react';
+export default ListCoursesComponent
+import React, { Component } from 'react';
 import ListCoursesComponent from './ListCoursesComponent';
 
 class SecurityApp extends Component {

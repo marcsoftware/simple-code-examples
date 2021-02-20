@@ -1,4 +1,4 @@
-package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.course;
+package com.in28minutes.fullstack;
 
 public class Course {
 	private Long id;
@@ -77,7 +77,8 @@ public class Course {
 		return true;
 	}
 
-}package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.course;
+}
+package com.in28minutes.fullstack;
 
 import java.util.List;
 
@@ -98,7 +99,7 @@ public class CourseResource {
 	public List<Course> getAllCourses(@PathVariable String username) {
 		return courseManagementService.findAll();
 	}
-}package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.course;
+}package com.in28minutes.fullstack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +123,8 @@ public class CoursesHardcodedService {
 	public List<Course> findAll() {
 		return courses;
 	}
-}package com.in28minutes.fullstack.springboot.rest.api.springbootcorscrossorigincsrf.basic.auth;
+}
+package com.in28minutes.fullstack;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
