@@ -3,7 +3,14 @@ java Hello
 javac -d . src/Atomic1.java
 java -classpath . src.Atomic1
 
-#react commands
+#react commands 
+npm install -g create-react-native-app
+create-react-native-app MyReactNative
+npm install -g react-native-cli //optional
+npm start
+
+
+#react commands with expo
 npm install -g expo-cli   //one time only
 expo init AwesomeProject
 cd AwesomeProject
